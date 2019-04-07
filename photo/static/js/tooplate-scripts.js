@@ -9,7 +9,7 @@ function drawLineChart() {
           {
             scaleLabel: {
               display: true,
-              labelString: "Hits"
+              labelString: "Performance"
             }
           }
         ]
@@ -34,24 +34,24 @@ function drawLineChart() {
         ],
         datasets: [
           {
-            label: "Latest Hits",
-            data: [88, 68, 79, 57, 50, 55, 70],
+            label: "# orders",
+            data: [88, 68, 55, 57, 70, 75, 60],
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             cubicInterpolationMode: "monotone",
             pointRadius: 0
           },
           {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
+            label: "# Positive Comments",
+            data: [33, 45, 37, 41, 58, 55, 39],
             fill: false,
             borderColor: "rgba(255,99,132,1)",
             cubicInterpolationMode: "monotone",
             pointRadius: 0
           },
           {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
+            label: "# Negative Comments",
+            data: [55, 23, 18, 15, 12, 20, 21],
             fill: false,
             borderColor: "rgba(153, 102, 255, 1)",
             cubicInterpolationMode: "monotone",
@@ -105,7 +105,7 @@ function drawBarChart() {
     configBar = {
       type: "horizontalBar",
       data: {
-        labels: ["Bob", "Alice", "Lan Yifan", "Cai Wenjing", "Ye Haolin", "Ye Chengwei", "Caiwei"],
+        labels: ["Bob", "Alice", "Lan Yifan", "Cai Wenjing", "Ye Haolin", "Ye Chengwei", "Marvel"],
         datasets: [
           {
             label: "KPI grade",
