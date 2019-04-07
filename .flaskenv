@@ -1,0 +1,2 @@
+FLASK_APP=photo
+FLASK_ENV=development
