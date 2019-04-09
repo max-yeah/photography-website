@@ -50,6 +50,8 @@ def register():
             db.commit()
             return redirect(url_for('auth.login'))
 
+        print("resigter page error is: ", error)
+        return render_template('auth/register.html', error = error)
 
     return render_template('auth/register.html')
 
@@ -90,6 +92,7 @@ def login():
 
 
         print("error!!!", error)
+        return render_template('auth/login.html',error = error)
 
     return render_template('auth/login.html')
 
