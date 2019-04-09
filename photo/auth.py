@@ -11,6 +11,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    g.current = "unlogin"
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -54,6 +55,7 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    g.current = "unlogin"
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
