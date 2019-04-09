@@ -3,3 +3,4 @@ instance/
 *.pyc
 
 .DS_Store
+.vscode/settings.json
