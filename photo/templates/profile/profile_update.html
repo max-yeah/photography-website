@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <h1>{% block title %}Edit Profile for {{ profiles['username'] }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username"
+      value="{{ request.form['username'] or profiles['username'] }}" required>
+    <label for="position">Position</label>
+    <input name="position" id="position"
+    value="{{ request.form['position'] or profiles['position'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+
+
+{% endblock %}
+
+

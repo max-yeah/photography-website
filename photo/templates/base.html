@@ -62,15 +62,27 @@
             </li>
             
             <li class="nav-item">
+              {% if g.current == "product" %}
+                <a class="nav-link active" href="products.html">
+                  <i class="fas fa-shopping-cart"></i> Products
+                </a>
+              {% else %}
               <a class="nav-link" href="products.html">
-                <i class="fas fa-shopping-cart"></i> Products
-              </a>
+                  <i class="fas fa-shopping-cart"></i> Products
+                </a> 
+              {% endif %}             
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="accounts.html">
-                <i class="far fa-user"></i> Accounts
-              </a>
+              {% if g.current == "profile" %}
+                <a class="nav-link active" href="{{ url_for('profile.index', id=g.user['id'], position = g.user['position']) }}">
+                  <i class="far fa-user"></i> Accounts
+                </a>
+              {% else %}
+                <a class="nav-link" href="{{ url_for('profile.index', id=g.user['id'], position = g.user['position']) }}">
+                  <i class="far fa-user"></i> Accounts
+                </a>    
+              {% endif %}          
             </li>
             
           </ul>
