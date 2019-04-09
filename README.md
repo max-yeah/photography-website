@@ -2,11 +2,28 @@
 
 Setting up the environment
 
-1. Setting up the virtual environment. The system is currently developed with Python3. Please make sure that the Flask, Pymysql is properly installed in the virtual environment. Refer to <http://flask.pocoo.org/docs/1.0/installation/#virtual-environments>
+1. Setting up the virtual environment. The system is currently developed with Python3. Please make sure that the Flask, Pymysql is properly installed in the `virtual environment`. Refer to <http://flask.pocoo.org/docs/1.0/installation/#virtual-environments>
 
-2. Before initialize the database, we need to install dependency packages in virtual environment: cryptography and pymysql
+   - For Linux and Mac:
+
+     ```
+     mkdir myproject
+     cd myproject
+     python3 -m venv venv
+     . venv/bin/activate
+     ```
+
+   - For Windows:
 
    ```
+           py -3 -m venv venv
+           venv\Scripts\activate
+   ```
+
+2. Install dependency packages in virtual environment:
+
+   ```
+   pip install Flask
    pip install pymysql
    pip install cryptography
    ```
