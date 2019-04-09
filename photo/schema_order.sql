@@ -18,8 +18,8 @@ boughtby,
  vehicle;
 
 -- This will be delected in future version
-DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
