@@ -81,7 +81,7 @@ function drawBarChart() {
             },
             scaleLabel: {
               display: true,
-              labelString: "KPI"
+              labelString: "Members"
             }
           }
         ]
