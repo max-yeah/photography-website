@@ -1,5 +1,5 @@
 import pymysql
-
+import os
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
@@ -60,7 +60,8 @@ def close_db(e=None):
 def init_db():
     db = get_db()
     cursor = db.cursor()
-    stmts = parse_sql('/Users/yehaolin/Downloads/test4/photo/schema_order.sql')
+    DATABASE=os.path.join(os.path.dirname(__file__), 'schema_order.sql')
+    stmts = parse_sql(DATABASE)
     for stmt in stmts:
         cursor.execute(stmt)
     

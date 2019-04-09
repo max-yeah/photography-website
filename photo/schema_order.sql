@@ -17,6 +17,25 @@ boughtby,
  takephoto,
  vehicle;
 
+-- This will be delected in future version
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS post;
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(20) UNIQUE NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  position VARCHAR(20) UNIQUE
+);
+
+CREATE TABLE post (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title VARCHAR(20) NOT NULL,
+  body VARCHAR(1000) NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
 
 -- For ManagerLevel: junior, senior, etc
 CREATE TABLE projectmanager
