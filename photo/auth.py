@@ -27,7 +27,7 @@ def register():
         elif not position:
             error = 'position is required.'
         else:
-            if position.lower() == 'projectmanager':
+            if position.lower() == 'project manager':
                 cursor.execute(
                     "SELECT id FROM ProjectManager WHERE username = '%s'" % (username,))
             # elif position.lower() == 'photographer':
@@ -38,7 +38,7 @@ def register():
                 error = 'User {} is already registered. Or you have the wrong position'.format(username)
 
         if error is None:
-            if position.lower() == 'projectmanager':
+            if position.lower() == 'project manager': #position will be shown in profile page, so a pace is needed
                 cursor.execute(
                 "INSERT INTO projectmanager (username, password, position) VALUES ('%s', '%s', '%s')" % \
                 (username, generate_password_hash(password),position))
@@ -66,7 +66,7 @@ def login():
         db = get_db()
         error = None
         cursor = db.cursor()
-        if position.lower() == 'projectmanager':
+        if position.lower() == 'project manager':
             cursor.execute(
                 "SELECT * FROM projectmanager WHERE username = '%s'" % (username,)
             )
@@ -106,7 +106,7 @@ def load_logged_in_user():
     else:
         db = get_db()
         cursor = db.cursor()
-        if user_position.lower() == 'projectmanager':
+        if user_position.lower() == 'project manager':
             cursor.execute(
                 "SELECT * FROM projectmanager WHERE id = '%d'" % (user_id,)
             )

@@ -15,13 +15,14 @@ def index(id, position):
     g.current = "profile"
     db = get_db()
     cursor = db.cursor()
-    if position.lower() == 'projectmanager':
+    if position.lower() == 'project manager':
         sql = ("SELECT * FROM projectmanager WHERE id = '%d'" % (id,))
     else:
         sql = ("SELECT * FROM photographer WHERE id = '%d'" % (id,))  
     cursor.execute(sql)
 
     profiles = cursor.fetchone()
+    print(profiles)
     return render_template('profile/profile_index.html', profiles=profiles)
 
 def get_profile(id, position, check_author=True):
