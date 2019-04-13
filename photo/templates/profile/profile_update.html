@@ -1,22 +1,103 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  <h1>{% block title %}Edit Profile for {{ profiles['username'] }}{% endblock %}</h1>
-{% endblock %}
+{% block title %}Profile{% endblock %} 
 
 {% block content %}
-<form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username"
-      value="{{ request.form['username'] or profiles['username'] }}" required>
-    <label for="position">Position</label>
-    <input name="position" id="position"
-    value="{{ request.form['position'] or profiles['position'] }}" required>
-    <input type="submit" value="Save">
-  </form>
-  <hr>
-
-
+<div class="container mt-5">
+    <div class="row tm-content-row">
+      <div class="col-12 tm-block-col">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <h3 class="tm-block-title">Your Position</h2>
+          <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row tm-content-row">
+      <div class="tm-block-col tm-col-avatar">
+        <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+          <h2 class="tm-block-title">Picture</h2>
+          <div class="tm-avatar-container">
+            <img
+              src="https://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-1.jpg"
+              alt="Avatar"
+              class="tm-avatar img-fluid mb-4"
+            />
+            <!-- <a href="#" class="tm-avatar-delete-link">
+              <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a> -->
+          </div>
+          <!-- <button class="btn btn-primary btn-block text-uppercase">
+            Upload New Photo
+          </button> -->
+        </div>
+      </div>
+      <div class="tm-block-col tm-col-account-settings">
+        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+          <h2 class="tm-block-title">Account Settings</h2>
+          <form action="" class="tm-signup-form row">
+            <div class="form-group col-lg-6">
+              <label for="name">Your Alias</label>
+              <input
+                id="name"
+                value="{{profiles.username}}"
+                name="name"
+                type="text"
+                class="form-control validate"
+                required
+              />
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="email">Your birthday</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value="{{profiles.birthday}}"
+                class="form-control validate"
+                required
+              />
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                class="form-control validate"
+              />
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="password2">Re-enter Password</label>
+              <input
+                id="password2"
+                name="password2"
+                type="password"
+                class="form-control validate"
+              />
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="phone">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                class="form-control validate"
+                required
+              />
+            </div>
+            <div class="form-group col-lg-6">
+              <label class="tm-hide-sm">&nbsp;</label>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block text-uppercase"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
-
-
