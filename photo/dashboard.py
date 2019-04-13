@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from photo.auth import login_required
 from photo.db import get_db
 
-bp = Blueprint('blog', __name__)
+bp = Blueprint('dashboard', __name__)
 
 @bp.route('/')
 def index():
@@ -15,12 +15,12 @@ def index():
         db = get_db()
         cursor = db.cursor()
         cursor.execute(
-            "SELECT p.id, title, body, created, author_id, username"
-            " FROM post p JOIN user u ON p.author_id = u.id"
-            " ORDER BY created DESC"
+            "SELECT *"
+            " FROM porder"
+            " ORDER BY orderid"
         )
-        posts = cursor.fetchall()
-        return render_template('blog/index.html', posts=posts)
+        orders = cursor.fetchall()
+        return render_template('dashboard/index.html', orders=orders)
     else:
         return redirect(url_for('auth.login'))
 
@@ -47,9 +47,9 @@ def create():
                 (title, body, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('blog.index'))
+            return redirect(url_for('dashboard.index'))
 
-    return render_template('blog/create.html')
+    return render_template('dashboard/create.html')
 
 def get_post(id, check_author=True):
     db = get_db()
@@ -94,9 +94,9 @@ def update(id):
                 (title, body, id)
             )
             db.commit()
-            return redirect(url_for('blog.index'))
+            return redirect(url_for('dashboard.index'))
 
-    return render_template('blog/update.html', post=post)
+    return render_template('dashboard/update.html', post=post)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
@@ -106,4 +106,4 @@ def delete(id):
     cursor = db.cursor()
     cursor.execute("DELETE FROM post WHERE id = '%d'" % (id,))
     db.commit()
-    return redirect(url_for('blog.index'))
+    return redirect(url_for('dashboard.index'))

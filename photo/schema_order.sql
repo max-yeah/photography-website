@@ -65,6 +65,7 @@ CREATE TABLE porder
 (
   orderid INT NOT NULL,
   startdate DATE NOT NULL,
+  status VARCHAR(40) NOT NULL,
   expectduration INT NOT NULL,
   price INT NOT NULL,
   place VARCHAR(40) NOT NULL,
