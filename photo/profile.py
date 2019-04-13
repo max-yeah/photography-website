@@ -80,4 +80,4 @@ def delete(id):
     cursor = db.cursor()
     cursor.execute("DELETE FROM post WHERE id = '%d'" % (id,))
     db.commit()
-    return redirect(url_for('blog.index'))
+    return redirect(url_for('dashboard.index'))
