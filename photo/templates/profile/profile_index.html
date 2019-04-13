@@ -37,7 +37,7 @@
           <h2 class="tm-block-title">Account Information</h2>
           <form action="" class="tm-signup-form row">
             <div class="form-group col-lg-6">
-              <label for="name">Your Name</label>
+              <label for="name">Your Alias</label>
               <div class="form-control validate"><p style="margin-top: -2%;">{{profiles.username}}</p></div>
             </div>
             <div class="form-group col-lg-6">
@@ -58,20 +58,20 @@
             </div>
             <div class="form-group col-lg-6">
               <label class="tm-hide-sm">&nbsp;</label>
-              <button
-                type="submit"
+              <a
                 class="btn btn-primary btn-block text-uppercase"
+                href="{{ url_for('profile.update', id=g.user['id'], position = g.user['position']) }}"
               >
                 Update Your Profile
-              </button>
+              </a>
             </div>
             <div class="col-12">
-              <button
-                type="submit"
+              <a
+                href="{{ url_for('profile.delete', id=g.user['id']) }}"
                 class="btn btn-primary btn-block text-uppercase"
               >
                 Delete Your Account
-              </button>
+              </a>
             </div>
           </form>
         </div>

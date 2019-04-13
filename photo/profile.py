@@ -28,6 +28,7 @@ def index(id, position):
 def get_profile(id, position, check_author=True):
     db = get_db()
     cursor = db.cursor()
+    position = "".join(position.split()) ## remove space
     sql = ("SELECT * FROM %s WHERE id = '%d'" % (position, id,))
     cursor.execute(sql)
     profiles = cursor.fetchone()
@@ -45,6 +46,7 @@ def get_profile(id, position, check_author=True):
 def update(id, position):
     g.current = "profile"
     profiles = get_profile(id, position)
+    print(profiles)
 
     if request.method == 'POST':
         username = request.form['username']
@@ -69,7 +71,6 @@ def update(id, position):
 
             db.commit()
             return redirect(url_for('profile.index', id = id, position = position))
-
     return render_template('profile/profile_update.html', profiles=profiles)
 
 @bp.route('/<int:id>/profile/delete', methods=('POST',))
