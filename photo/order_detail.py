@@ -104,7 +104,7 @@ def create():
 
 
 
-@bp.route('/<int:id>/order_detail/update', methods=('GET', 'POST'))
+@bp.route('/<int:id>/order_detail/detail_update', methods=('GET', 'POST'))
 @login_required
 def update(id):
     order = get_order(id)
@@ -145,7 +145,7 @@ def update(id):
             return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
             aftereffects = aftereffects))
 
-    return render_template('order_detail/update.html', order=order, photographers=photographers, \
+    return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
             aftereffects = aftereffects)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
