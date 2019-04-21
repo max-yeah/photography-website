@@ -44,7 +44,7 @@ def index(id):
         )
         aftereffects = cursor.fetchall()
 
-        return render_template('order_detail/index.html', order=order, photographers=photographers, \
+        return render_template('order_detail/detail_index.html', order=order, photographers=photographers, \
             aftereffects = aftereffects)
 
     else:
