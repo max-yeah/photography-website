@@ -66,11 +66,12 @@ def init_db():
         cursor.execute(stmt)
     
     db.commit()
+    INSERTION=os.path.join(os.path.dirname(__file__), 'insert.sql')
+    insts = parse_sql(INSERTION)
+    for inst in insts:
+        cursor.execute(inst)
+    db.commit()
 
-#     for line in open('/Users/lanyifan/workspace/flask_work/test2/photo/schema.sql'):
-        # cursor.execute(line)
-#     with current_app.open_resource('schema.sql') as f:
-#         db.executescript(f.read().decode('utf8'))
 
 
 @click.command('init-db')
