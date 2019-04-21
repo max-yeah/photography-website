@@ -43,5 +43,7 @@ def create_app(test_config=None):
     from . import profile
     app.register_blueprint(profile.bp)
 
+    from . import order_detail
+    app.register_blueprint(order_detail.bp)
     
     return app
