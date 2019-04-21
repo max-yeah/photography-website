@@ -15,9 +15,11 @@ def index(id, position):
     g.current = "profile"
     db = get_db()
     cursor = db.cursor()
-    sql = ("SELECT * FROM %s WHERE id = '%d'" % (position, id,))
-
-    cursor.execute(sql)
+    cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
+            "pos.birthday birthday, pos.salary salary, MAX(phone.phone) phone"
+            " FROM %s pos, %s_phone phone"
+            " WHERE pos.id = '%d' AND"
+            " pos.id = phone.id" % (position, position, id,))
 
     profiles = cursor.fetchone()
     if profiles['position'] == 'aftereffect':
@@ -78,11 +80,11 @@ def update(id, position):
             return redirect(url_for('profile.index', id = id, position = position))
     return render_template('profile/profile_update.html', profiles=profiles)
 
-@bp.route('/<int:id>/profile/delete', methods=('POST',))
+@bp.route('/<int:id>/<string:position>/profile/delete', methods=('POST',))
 @login_required
-def delete(id):
+def delete(id, position):
     g.current = "profile"
-    get_profile(id)
+    get_profile(id, position)
     db = get_db()
     cursor = db.cursor()
     cursor.execute("DELETE FROM post WHERE id = '%d'" % (id,))

@@ -24,20 +24,22 @@ def index(id):
         cursor.execute(
             "SELECT photo.id id, photo.username name, photo.level level, MAX(pp.phone) phone"
             " FROM photographer photo, photographer_phone pp"
-            " WHERE photo.id = pp.photographerid AND"
-            " photo.id in SELECT photographerid"
+            " WHERE photo.id = pp.id AND"
+            " photo.id in (SELECT photographerid"
             "               FROM takephoto"
-            "               WHERE orderid =  '%d'" % (id, )
+            "               WHERE orderid =  '%d')"
+            " GROUP BY photo.id, photo.username, photo.level" % (id, )
         )
         photographers = cursor.fetchall()
 
         cursor.execute(
             "SELECT effect.id id, effect.username name, effect.level level, MAX(ap.phone) phone"
             " FROM aftereffect effect, aftereffect_phone ap"
-            " WHERE effect.id = ap.effectid AND"
-            " effect.id in SELECT effectid"
+            " WHERE effect.id = ap.id AND"
+            " effect.id in (SELECT effectid"
             "               FROM doeffect"
-            "               WHERE orderid =  '%d'" % (id, )
+            "               WHERE orderid =  '%d')"
+            " GROUP BY effect.id, effect.username, effect.level" % (id, )
         )
         aftereffects = cursor.fetchall()
 
