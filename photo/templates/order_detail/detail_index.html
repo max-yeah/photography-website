@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- <div class="row tm-content-row">
+      <div class="col-12 tm-block-col">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <h3 class="tm-block-title">Your Position</h3>
+          <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+        </div>
+      </div>
+    </div> -->
+    <!-- row -->
+    <div class="row tm-content-row">
+      <div class="tm-block-col tm-col-avatar">
+        <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+          <!-- <h2 class="tm-block-title">Picture</h2> -->
+          <div class="tm-avatar-container">
+            <img
+              src="https://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-1.jpg"
+              alt="Avatar"
+              class="tm-avatar img-fluid mb-4"
+            />
+            <!-- <a href="#" class="tm-avatar-delete-link">
+              <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a> -->
+          </div>
+          <button class="btn btn-primary btn-block text-uppercase">
+            New Photo
+          </button>
+        </div>
+      </div>
+      
+      <div class="tm-block-col tm-col-account-settings">
+        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+          <h2 class="tm-block-title">Your Position</h2>
+          <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+          <h2 class="tm-block-title">Your Id</h2>
+          <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.id}}</p></div>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- <div class="row tm-content-row">
+        <div class="tm-block-col tm-col-avatar">
+          <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+            <h2 class="tm-block-title">Your Position</h2>
+            <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="container mt-5">
+          <div class="row tm-content-row">
+            <div class="col-12 tm-block-col">
+              <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <h3 class="tm-block-title">Your Position</h2>
+                <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+              </div>
+            </div>
+          </div>
+
+
+      <div class="tm-block-col tm-col-account-settings">
+        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+          <h2 class="tm-block-title">Account Information</h2>
+          <form action="" class="tm-signup-form row">
+            <div class="form-group col-lg-6">
+              <label for="name">Your Alias</label>
+              <div class="form-control validate"><p style="margin-top: -2%;">{{profiles.username}}</p></div>
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="email">Your Current Salary</label>
+              <div class="form-control validate"><p style="margin-top: -2%;">{{profiles.salary}}</p></div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="email">Account Level</label>
+                <div class="form-control validate"><p style="margin-top: -2%;">{{profiles.level}}</p></div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="email">Birthday</label>
+                <div class="form-control validate"><p style="margin-top: -2%;">{{profiles.birthday}}</p></div>
+            </div>            
+            <div class="form-group col-lg-6">
+              <label for="phone">Phone</label>
+              <div class="form-control validate"><p style="margin-top: -2%;"></p></div>
+            </div>
+            <div class="form-group col-lg-6">
+              <label class="tm-hide-sm">&nbsp;</label>
+              <a
+                class="btn btn-primary btn-block text-uppercase"
+                href="{{ url_for('profile.update', id=g.user['id'], position = g.user['position']) }}"
+              >
+                Update Your Profile
+              </a>
+            </div>
+            <div class="col-12">
+              <a
+                href="{{ url_for('profile.delete', id=g.user['id']) }}"
+                class="btn btn-primary btn-block text-uppercase"
+              >
+                Delete Your Account
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
