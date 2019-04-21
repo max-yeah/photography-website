@@ -10,6 +10,7 @@ bp = Blueprint('order_detail', __name__)
 
 @bp.route('/<int:id>/order_detail/index')
 def index(id):
+    # print(id)
     if (g.user):
         g.current = "index"
         db = get_db()
@@ -45,6 +46,7 @@ def index(id):
 
         return render_template('order_detail/index.html', order=order, photographers=photographers, \
             aftereffects = aftereffects)
+
     else:
         return redirect(url_for('auth.login'))
 
