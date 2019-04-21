@@ -16,9 +16,13 @@ def index(id):
         db = get_db()
         cursor = db.cursor()
         cursor.execute(
-            "SELECT *"
-            " FROM porder"
-            " WHERE orderid = '%d'" % (id, )
+            "SELECT ord.orderid orderid, ord.startdate startdate,"
+            " ord.status status, ord.expectduration expectduration,"
+            " ord.price price, ord.place place, ord.ordertype ordertype,"
+            " ord.satisfaction satisfaction, ma.username managername"
+            " FROM porder ord, projectmanager ma"
+            " WHERE ord.orderid = '%d' AND"
+            " ord.managerid = ma.id" % (id, )
         )
         order = cursor.fetchone()
 
