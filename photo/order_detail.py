@@ -117,15 +117,18 @@ def detail_update(id):
         price = request.form['price']
         ordertype = request.form['ordertype']
         managername = request.form['managername']
+        ordertype = ordertype.lower()
         error = None
 
         if not status or not startdate or not expectduration or not price \
             or not ordertype or not managername:
             error = 'Information is not complete.'
+        if ordertype != 'wedding' and ordertype != 'art' and ordertype != 'business':
+            error = 'This order type does not exist'
 
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT id from projectmanager WHERE username = '%s") % (managername,)
+        cursor.execute("SELECT id from projectmanager WHERE username = '%s'") % (managername,)
         managerid = cursor.fetchone()
 
         if managerid is None:
