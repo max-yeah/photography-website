@@ -80,9 +80,10 @@ def update(id, position):
             return redirect(url_for('profile.index', id = id, position = position))
     return render_template('profile/profile_update.html', profiles=profiles)
 
-@bp.route('/<int:id>/<string:position>/profile/delete', methods=('POST',))
+@bp.route('/<int:id>/profile/delete', methods=('POST',))
 @login_required
-def delete(id, position):
+def delete(id):
+    position = 'photographer' # just in case
     g.current = "profile"
     get_profile(id, position)
     db = get_db()
