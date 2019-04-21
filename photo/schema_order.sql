@@ -69,7 +69,7 @@ CREATE TABLE porder
   expectduration INT NOT NULL,
   price INT NOT NULL,
   place VARCHAR(40) NOT NULL,
-  ordertype CHAR(1) NOT NULL,
+  ordertype CHAR(20) NOT NULL,
   satisfaction INT NOT NULL,
   managerid INT NOT NULL,
   PRIMARY KEY (orderid),
