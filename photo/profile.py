@@ -15,20 +15,25 @@ def index(id, position):
     g.current = "profile"
     db = get_db()
     cursor = db.cursor()
-    if position.lower() == 'project manager':
-        sql = ("SELECT * FROM projectmanager WHERE id = '%d'" % (id,))
-    else:
-        sql = ("SELECT * FROM photographer WHERE id = '%d'" % (id,))  
+    sql = ("SELECT * FROM %s WHERE id = '%d'" % (position, id,))
+
     cursor.execute(sql)
 
     profiles = cursor.fetchone()
-    print(profiles)
+    if profiles['position'] == 'aftereffect':
+        profiles['position'] = 'After Effect'
+    if profiles['position'] == 'devicemanager':
+        profiles['position'] = 'Device Manager'
+    if profiles['position'] == 'projectmanager':
+        profiles['position'] = 'Project Manager'
+    if profiles['position'] == 'photographer':
+        profiles['position'] = 'Photographer'
     return render_template('profile/profile_index.html', profiles=profiles)
 
-def get_profile(id, position, check_author=True):
+def get_profile(id, position, check_author=True):   
     db = get_db()
     cursor = db.cursor()
-    position = "".join(position.split()) ## remove space
+    # position = "".join(position.split()) ## remove space
     sql = ("SELECT * FROM %s WHERE id = '%d'" % (position, id,))
     cursor.execute(sql)
     profiles = cursor.fetchone()
