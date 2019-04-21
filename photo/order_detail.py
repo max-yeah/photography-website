@@ -122,7 +122,7 @@ def detail_update(id):
         expectduration = int(expectduration)
         price = int(price)
         ordertype = str(ordertype)
-        managername = str(managername)
+        managername = managername
         ordertype = ordertype.lower()
         error = None
 
