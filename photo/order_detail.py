@@ -122,7 +122,7 @@ def detail_update(id):
         expectduration = int(expectduration)
         price = int(price)
         ordertype = str(ordertype)
-        managername = managername
+        managername = str(managername)
         ordertype = ordertype.lower()
         error = None
 
@@ -134,8 +134,10 @@ def detail_update(id):
 
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT id from projectmanager WHERE username = '%s'") % (managername,)
-        managerid = cursor.fetchone()
+        cursor.execute("SELECT id from projectmanager WHERE username = '%s'" % (managername,))
+        manager = cursor.fetchone()
+        managerid = manager['id']
+        managerid = int(managerid)
 
         if managerid is None:
             error = 'Incorrect manager'
@@ -145,14 +147,14 @@ def detail_update(id):
         else:
             cursor.execute(
                 "UPDATE porder SET startdate = '%s', status = '%s',"
-                " expectduration = '%d', price = '%d', ordertype = '%d',"
+                " expectduration = '%d', price = '%d', ordertype = '%s',"
                 " managerid = '%d'"
                 " WHERE orderid = '%d'" % \
                 (startdate, status, expectduration, price, ordertype, managerid, id)
             )
             db.commit()
             return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
-            aftereffects = aftereffects))
+            aftereffects = aftereffects, id = id))
 
     return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
             aftereffects = aftereffects)
