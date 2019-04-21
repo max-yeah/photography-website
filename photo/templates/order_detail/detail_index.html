@@ -15,15 +15,17 @@
         <a
           class="btn btn-primary text-uppercase"
           style="border-radius: 12px 12px 12px 12px"
-          href="#"
+          href="{{ url_for('order_detail.detail_update', id = order.orderid) }}"
         >
           Edit
         </a>
+
         <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        
         <a
           class="btn btn-primary text-uppercase"
           style="border-radius: 12px 12px 12px 12px"
-          href="{{ url_for('order_detail.update', id = order.orderid) }}"
+          href="#"
         >
           Delete
         </a>
