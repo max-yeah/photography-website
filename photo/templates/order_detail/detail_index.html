@@ -9,32 +9,52 @@
     <!-- //order list -->
   <div class="col-12 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-      <h2 class="tm-block-title">Basic Information</h2>
+      <!-- <h2 class="tm-block-title">Order: Basic Information</h2> -->
+      <p class="tm-block-title">
+      <a>Order #{{order.orderid}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a
+          class="btn btn-primary text-uppercase"
+          style="border-radius: 12px 12px 12px 12px"
+          href="#"
+        >
+          Edit
+        </a>
+        <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a
+          class="btn btn-primary text-uppercase"
+          style="border-radius: 12px 12px 12px 12px"
+          href="{{ url_for('order_detail.update', id = order.orderid) }}"
+        >
+          Delete
+        </a>
+      </p>
           <form action="" class="tm-signup-form row">
-            <div class="form-group col-lg-6">
-              <label for="name">Order ID</label>
-              <div class="form-control validate"><p style="margin-top: -2%;">{{order.orderid}}</p></div>
-            </div>
-            <div class="form-group col-lg-6">
+              <div class="form-group col-lg-4">
+                  <label for="phone">Manager Name</label>
+                  <div class="form-control validate"><p style="margin-top: -2%;">{{order.managername}}</p></div>
+              </div>
+            <div class="form-group col-lg-4">
               <label for="email">Status</label>
               <div class="form-control validate"><p style="margin-top: -2%;">{{order.status}}</p></div>
             </div>
-            <div class="form-group col-lg-6">
-                <label for="email">Expect duration</label>
+            <div class="form-group col-lg-4">
+                <label for="phone">Order Type</label>
+                <div class="form-control validate"><p style="margin-top: -2%;">{{order.ordertype}}</p></div>
+            </div>
+            <div class="form-group col-lg-4">
+                <label for="name">Start Date</label>
+                <div class="form-control validate"><p style="margin-top: -2%;">{{order.startdate}}</p></div>
+              </div>
+            <div class="form-group col-lg-4">
+                <label for="email">Expect Duration</label>
                 <div class="form-control validate"><p style="margin-top: -2%;">{{order.expectduration}}</p></div>
             </div>
-            <div class="form-group col-lg-6">
+            
+            <div class="form-group col-lg-4">
                 <label for="email">Price</label>
                 <div class="form-control validate"><p style="margin-top: -2%;">{{order.price}}</p></div>
-            </div>            
-            <div class="form-group col-lg-6">
-              <label for="phone">Order Type</label>
-              <div class="form-control validate"><p style="margin-top: -2%;">{{order.ordertype}}</p></div>
             </div>
-            <div class="form-group col-lg-6">
-                <label for="phone">Manager Name</label>
-                <div class="form-control validate"><p style="margin-top: -2%;">{{order.managername}}</p></div>
-              </div>
+          </form>
     </div>
   </div>
 
