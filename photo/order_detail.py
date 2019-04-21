@@ -106,7 +106,7 @@ def create():
 
 @bp.route('/<int:id>/order_detail/detail_update', methods=('GET', 'POST'))
 @login_required
-def update(id):
+def detail_update(id):
     order = get_order(id)
     photographers = get_photographers(id)
     aftereffects = get_aftereffects(id)
