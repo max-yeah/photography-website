@@ -27,26 +27,22 @@ def register():
         elif not position:
             error = 'position is required.'
         else:
-            if position.lower() == 'project manager':
-                cursor.execute(
-                    "SELECT id FROM ProjectManager WHERE username = '%s'" % (username,))
-            # elif position.lower() == 'photographer':
-            else:
-                cursor.execute(
-                    "SELECT id FROM Photographer WHERE username = '%s'" % (username,))
+            position = position.lower()
+            if position == 'project manager':
+                position = 'projectmanager'
+            if position == 'device manager':
+                position = 'devicemanager'
+            if position == 'after effect':
+                position = 'aftereffect'      
+            cursor.execute(
+                "SELECT id FROM %s WHERE username = '%s'" % (position, username,))
             if cursor.fetchone() != None:
                 error = 'User {} is already registered. Or you have the wrong position'.format(username)
 
-        if error is None:
-            if position.lower() == 'project manager': #position will be shown in profile page, so a pace is needed
-                cursor.execute(
-                "INSERT INTO projectmanager (username, password, position) VALUES ('%s', '%s', '%s')" % \
-                (username, generate_password_hash(password),position))
-            elif position.lower() == 'photographer':
-                cursor.execute(
-                "INSERT INTO photographer (username, password, position) VALUES ('%s', '%s', '%s')" % \
-                (username, generate_password_hash(password),position))
-                # (username, 'apple',position)
+        if error is None:                
+            cursor.execute(
+            "INSERT INTO %s (username, password, position) VALUES ('%s', '%s', '%s')" % \
+            (position, username, generate_password_hash(password),position))
             db.commit()
             return redirect(url_for('auth.login'))
 
@@ -66,28 +62,28 @@ def login():
         db = get_db()
         error = None
         cursor = db.cursor()
-        if position.lower() == 'project manager':
-            cursor.execute(
-                "SELECT * FROM projectmanager WHERE username = '%s'" % (username,)
-            )
-        # elif position.lower() == 'photographer':
-        else:
-            cursor.execute(
-                "SELECT * FROM photographer WHERE username = '%s'" % (username,)
-            )
+        position = position.lower()
+        if position == 'project manager':
+            position = 'projectmanager'
+        if position == 'device manager':
+            position = 'devicemanager'
+        if position == 'after effect':
+            position = 'aftereffect'  
+        cursor.execute(
+            "SELECT * FROM %s WHERE username = '%s'" % (position, username,)
+        )
         user = cursor.fetchone()
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
-        # elif position != user['position']:
-        #     error = 'Incorrect position.'
+        else:
+            if not check_password_hash(user['password'], password):
+                error = 'Incorrect password.'
+
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            session['user_position'] = user['position'] # 有点坑，大小写
-            # return redirect(url_for('index'))
+            session['user_position'] = user['position']
             return redirect(url_for('index'))
 
 
@@ -106,16 +102,11 @@ def load_logged_in_user():
     else:
         db = get_db()
         cursor = db.cursor()
-        if user_position.lower() == 'project manager':
-            cursor.execute(
-                "SELECT * FROM projectmanager WHERE id = '%d'" % (user_id,)
-            )
-            g.user = cursor.fetchone()
-        elif user_position.lower() == 'photographer':
-            cursor.execute(
-                "SELECT * FROM photographer WHERE id = '%d'" % (user_id,)
-            )
-            g.user = cursor.fetchone()
+        # if user_position.lower() == 'project manager':
+        cursor.execute(
+            "SELECT * FROM %s WHERE id = '%d'" % (user_position, user_id,)
+        )
+        g.user = cursor.fetchone()
         
 
 @bp.route('/logout')
