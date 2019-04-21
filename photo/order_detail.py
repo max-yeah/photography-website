@@ -10,6 +10,7 @@ bp = Blueprint('order_detail', __name__)
 
 @bp.route('/<int:id>/order_detail/index')
 def index(id):
+    # print(id)
     if (g.user):
         g.current = "index"
         db = get_db()
@@ -21,28 +22,29 @@ def index(id):
         )
         order = cursor.fetchone()
 
-        cursor.execute(
-            "SELECT photo.id id, photo.username name, photo.level level, MAX(pp.phone) phone"
-            " FROM photographer photo, photographer_phone pp"
-            " WHERE photo.id = pp.photographerid AND"
-            " photo.id in SELECT photographerid"
-            "               FROM takephoto"
-            "               WHERE orderid =  '%d'" % (id, )
-        )
-        photographers = cursor.fetchall()
+        # cursor.execute(
+        #     "SELECT photo.id id, photo.username name, photo.level level, MAX(pp.phone) phone"
+        #     " FROM photographer photo, photographer_phone pp"
+        #     " WHERE photo.id = pp.photographerid AND"
+        #     " photo.id in SELECT photographerid"
+        #     "               FROM takephoto"
+        #     "               WHERE orderid =  '%d'" % (id, )
+        # )
+        # photographers = cursor.fetchall()
 
-        cursor.execute(
-            "SELECT effect.id id, effect.username name, effect.level level, MAX(ap.phone) phone"
-            " FROM aftereffect effect, aftereffect_phone ap"
-            " WHERE effect.id = ap.effectid AND"
-            " effect.id in SELECT effectid"
-            "               FROM doeffect"
-            "               WHERE orderid =  '%d'" % (id, )
-        )
-        aftereffects = cursor.fetchall()
+        # cursor.execute(
+        #     "SELECT effect.id id, effect.username name, effect.level level, MAX(ap.phone) phone"
+        #     " FROM aftereffect effect, aftereffect_phone ap"
+        #     " WHERE effect.id = ap.effectid AND"
+        #     " effect.id in SELECT effectid"
+        #     "               FROM doeffect"
+        #     "               WHERE orderid =  '%d'" % (id, )
+        # )
+        # aftereffects = cursor.fetchall()
 
-        return render_template('order_detail/index.html', order=order, photographers=photographers, \
-            aftereffects = aftereffects)
+        # return render_template('order_detail/index.html', order=order, photographers=photographers, \
+        #     aftereffects = aftereffects)
+        return render_template('order_detail/detail_index.html', order=order)
     else:
         return redirect(url_for('auth.login'))
 
