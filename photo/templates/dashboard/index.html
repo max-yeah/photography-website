@@ -1,12 +1,7 @@
-{% extends 'base.html' %} 
-{% block title %}Dashboard Page{% endblock %} 
-
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Dashboard Page{% endblock %} {% block
+content %}
 <!-- row -->
 <div class="row tm-content-row">
-  
-  
   <!-- //latest hit -->
   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
     <div class="tm-bg-primary-dark tm-block">
@@ -15,7 +10,6 @@
     </div>
   </div>
 
-  
   <!-- //Performance -->
   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
     <div class="tm-bg-primary-dark tm-block">
@@ -24,11 +18,19 @@
     </div>
   </div>
 
-
   <!-- //order list -->
   <div class="col-12 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-      <h2 class="tm-block-title">Orders List</h2>
+      <p class="tm-block-title">
+        <a>Orders list&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a
+          class="btn btn-primary text-uppercase"
+          style="border-radius: 12px 12px 12px 12px"
+          href="#"
+        >
+          Add new Order
+        </a>
+      </p>
       <table class="table">
         <thead>
           <tr>
@@ -178,11 +180,8 @@
       </table>
     </div>
   </div>
-
 </div>
-{% endblock %} 
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="../static/js/moment.min.js"></script>
 <!-- https://momentjs.com/ -->
 <script src="../static/js/Chart.min.js"></script>
@@ -202,14 +201,12 @@
     lineChart;
   barChart; //, pieChart;
   // DOM is ready
-  $(document).ready(function() { 
-
+  $(document).ready(function() {
     drawLineChart(); // Line Chart
     drawBarChart(); // Bar Chart
     drawPieChart(); // Pie Chart
     updateBarChart();
-    
-    
+
     $(window).resize(function() {
       updateLineChart();
       updateBarChart();
