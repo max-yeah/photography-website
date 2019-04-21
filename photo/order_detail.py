@@ -117,6 +117,12 @@ def detail_update(id):
         price = request.form['price']
         ordertype = request.form['ordertype']
         managername = request.form['managername']
+        status = str(status)
+        startdate = str(startdate)
+        expectduration = int(expectduration)
+        price = int(price)
+        ordertype = str(ordertype)
+        managername = str(managername)
         ordertype = ordertype.lower()
         error = None
 
