@@ -20,7 +20,21 @@ def index():
             " ORDER BY orderid"
         )
         orders = cursor.fetchall()
-        return render_template('dashboard/index.html', orders=orders)
+
+        cursor.execute(
+            "SELECT MONTH(startdate) month, SUM(price) sale"
+            " FROM porder"
+            " WHERE YEAR(startdate) = YEAR(CURDATE())"
+            " GROUP BY MONTH(startdate)"
+        )
+        sales = cursor.fetchall()
+
+        # cursor.execute(
+        #     "SELECT o.managerid o.SUM(price) m.username"
+        #     "FROM porder o, projectmanager m"
+        #     "WHERE o.managerid = m.id AND"
+        # )
+        return render_template('dashboard/index.html', orders=orders, sales = sales)
     else:
         return redirect(url_for('auth.login'))
 
