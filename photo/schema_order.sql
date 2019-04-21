@@ -52,10 +52,10 @@ CREATE TABLE projectmanager
 
 CREATE TABLE projectmanager_phone
 (
-  managerid INT NOT NULL,
+  id INT NOT NULL,
   phone VARCHAR(11) NOT NULL,
-  PRIMARY KEY (phone, managerid),
-  FOREIGN KEY (managerid) REFERENCES projectmanager(id)
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES projectmanager(id)
 );
 
 -- For ordertype: A, B, C, etc
@@ -91,10 +91,10 @@ CREATE TABLE photographer
 
 CREATE TABLE photographer_phone
 (
-  photographerid INT NOT NULL,
+  id INT NOT NULL,
   phone VARCHAR(11) NOT NULL,
-  PRIMARY KEY (phone, photographerid),
-  FOREIGN KEY (photographerid) REFERENCES photographer(id)
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES photographer(id)
 );
 
 CREATE TABLE takephoto
@@ -121,10 +121,10 @@ CREATE TABLE aftereffect
 
 CREATE TABLE aftereffect_phone
 (
-  effectid INT NOT NULL,
+  id INT NOT NULL,
   phone VARCHAR(11) NOT NULL,
-  PRIMARY KEY (phone, effectid),
-  FOREIGN KEY (effectid) REFERENCES aftereffect(id)
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES aftereffect(id)
 );
 
 CREATE TABLE doeffect
@@ -148,10 +148,10 @@ CREATE TABLE customer
 
 CREATE TABLE customer_phone
 (
-  customerid INT NOT NULL,
+  id INT NOT NULL,
   phone VARCHAR(11) NOT NULL,
-  PRIMARY KEY (phone, customerid),
-  FOREIGN KEY (customerid) REFERENCES customer(customerid)
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES customer(customerid)
 );
 
 CREATE TABLE boughtby
@@ -190,10 +190,10 @@ CREATE TABLE devicemanager
 
 CREATE TABLE devicemanager_phone
 (
-  devicemanagerid INT NOT NULL,
+  id INT NOT NULL,
   phone VARCHAR(11) NOT NULL,
-  PRIMARY KEY (phone, devicemanagerid),
-  FOREIGN KEY (devicemanagerid) REFERENCES devicemanager(id)
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES devicemanager(id)
 );
 
 CREATE TABLE photodevice
