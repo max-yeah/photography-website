@@ -9,6 +9,11 @@
     <!-- //order list -->
   <div class="col-12 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+        <p class="col-12 text-center" >
+            {% if error %}
+              <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
+            {% endif %}
+        </p>
       <!-- <h2 class="tm-block-title">Order: Basic Information</h2> -->
       <p class="tm-block-title">
       <a>Order #{{order.orderid}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
