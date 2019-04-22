@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS 
 aftereffect, 
-aftereffect_phone,  
+aftereffect_phone,
+boss_phone, 
 boss,
 boughtby,           
  computer,           
