@@ -15,13 +15,22 @@ def index(id, position):
     g.current = "profile"
     db = get_db()
     cursor = db.cursor()
-    cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
-            "pos.birthday birthday, pos.salary salary, MAX(phone.phone) phone"
-            " FROM %s pos, %s_phone phone"
-            " WHERE pos.id = '%d' AND"
-            " pos.id = phone.id" % (position, position, id,))
-
-    profiles = cursor.fetchone()
+    cursor.execute("SELECT phone FROM %s_phone WHERE id = '%d'" % (position, id,))
+    phone = cursor.fetchone()
+    if phone == None:
+        cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
+        "pos.birthday birthday, pos.salary salary"
+        " FROM %s pos"
+        " WHERE pos.id = '%d'" % (position, id,))
+        profiles = cursor.fetchone()
+        profiles['phone'] = None
+    else:
+        cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
+                "pos.birthday birthday, pos.salary salary, MAX(phone.phone) phone"
+                " FROM %s pos, %s_phone phone"
+                " WHERE pos.id = '%d' AND"
+                " pos.id = phone.id" % (position, position, id,))
+        profiles = cursor.fetchone()
     if profiles['position'] == 'aftereffect':
         profiles['position'] = 'After Effect'
     if profiles['position'] == 'devicemanager':
