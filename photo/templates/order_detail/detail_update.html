@@ -91,6 +91,33 @@
                       required
                     />
             </div>
+              <!-- <div class="form-group col-lg-4">
+                <label for="photographer_name">Photographers</label>
+                <select multiple class="form-control">
+                    {% for photographer_name in photographer_names %}
+                      <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                    {% endfor %}
+                </select>
+              </div> -->
+              <div class="form-group col-lg-6">
+                  <label for="photographer_name">Photographers</label>
+                  <select multiple class="form-control">
+                      {% for photographer_name in photographer_names %}
+                        <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                      {% endfor %}
+                  </select>
+                  <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="aftereffect_name">Affect Effects</label>
+                    <select multiple class="form-control">
+                        {% for aftereffect_name in aftereffect_names %}
+                          <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
+                        {% endfor %}
+                    </select>
+                    <label for="aftereffect_name">Use 'Ctrl+Click' to choose multiple photographers</label>
+                  </div>
             <div class="form-group col-lg-2">
               <label class="tm-hide-sm">&nbsp;</label>
               <button
@@ -134,7 +161,8 @@
             {% endfor %}
             </tbody>
         </table> -->
-        <!-- <form action="/photographer_name/" method="post" class="tm-signup-form row">
+
+        <form action="/photographer_name/" method="post" class="tm-signup-form row">
           <div class="form-group col-lg-6">
               <label for="photographer_name">Photographer Name</label>
               <select 
@@ -156,12 +184,13 @@
                     Save
                   </button>
                 </div>
-      </form> -->
-      <form action="/photographer_name/" method="post" class="tm-signup-form row">
+      </form>
+
+      <form role="form" action="/photographer_name/" method="post" class="tm-signup-form row">
         <div class="form-group col-lg-6">
             <div class="col-sm-2 ">
                 <label>
-                    <input name="s_option" value="basketball" type="checkbox" checked> 篮球
+                    <input name="s_option" value="basketball" type="checkbox" checked > 篮球
                 </label>
             </div>
             <div class="col-sm-2 ">
@@ -240,4 +269,64 @@
           </div>
 </div>
 
+
+
+<label for="name">默认的复选框和单选按钮的实例</label>
+<div class="checkbox">
+    <label><input type="checkbox" value="">选项 1</label>
+</div>
+<div class="checkbox">
+    <label><input type="checkbox" value="">选项 2</label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 选项 1
+    </label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项 2 - 选择它将会取消选择选项 1
+    </label>
+</div>
+<label for="name">内联的复选框和单选按钮的实例</label>
+<div>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 选项 1
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 选项 2
+    </label>
+</div>
+
+
+
+<form role="form">
+  <div class="form-group">
+    <label for="name">选择列表</label>
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <label for="name">可多选的选择列表</label>
+    <select multiple class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+</form>
 {% endblock %}

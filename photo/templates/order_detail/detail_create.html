@@ -73,6 +73,7 @@
                               required
                             />
                     </div>
+                    
                     <div class="form-group col-lg-4">
                             <label for="price">Price</label>
                             <input
@@ -84,6 +85,26 @@
                               required
                             />
                     </div>
+                    <div class="form-group col-lg-6">
+                        <label for="photographer_name">Photographers</label>
+                        <select multiple class="form-control">
+                            {% for photographer_name in photographer_names %}
+                              <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                            {% endfor %}
+                        </select>
+                        <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                          <label for="aftereffect_name">Affect Effects</label>
+                          <select multiple class="form-control">
+                              {% for aftereffect_name in aftereffect_names %}
+                                <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
+                              {% endfor %}
+                          </select>
+                          <label for="aftereffect_name">Use 'Ctrl+Click' to choose multiple photographers</label>
+                        </div>
+
                 <div class="form-group col-lg-2">
                   <label class="tm-hide-sm">&nbsp;</label>
                   <button
@@ -123,7 +144,7 @@
                         </tbody>
                     </table>
             {% else %}
-                <form action="/photographer_name/" method="post" class="tm-signup-form row">
+                <!-- <form action="/photographer_name/" method="post" class="tm-signup-form row">
                     <div class="form-group col-lg-6">
                         <label for="photographer_name">Photographer Name</label>
                         <select 
@@ -145,7 +166,16 @@
                               Save
                             </button>
                           </div>
-                </form>
+                </form> -->
+                <div class="form-group col-lg-6">
+                    <label for="photographer_name">Photographers</label>
+                    <select multiple class="form-control">
+                        {% for photographer_name in photographer_names %}
+                          <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                        {% endfor %}
+                    </select>
+                    <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
+                  </div>
                 <!-- <div class="form-group col-lg-4"> -->
             {% endif %}
         <!-- </div> -->
@@ -200,6 +230,7 @@
                             </button>
                           </div>
                 </form>
+                
                 <!-- <div class="form-group col-lg-4"> -->
             {% endif %}
         <!-- </div> -->
