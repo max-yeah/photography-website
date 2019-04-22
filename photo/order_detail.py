@@ -142,7 +142,7 @@ def create():
         return redirect(url_for('order_detail.index', order=None, photographers=None, \
         aftereffects = None, id = id))
 
-    return render_template('order_detail/detail_update.html', order=None, photographers=None, \
+    return render_template('order_detail/detail_create.html', order=None, photographers=None, \
             aftereffects = None)
 
 
@@ -162,7 +162,7 @@ def detail_update(id):
     return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
             aftereffects = aftereffects, projectmanager_names = projectmanager_names)
 
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/<int:id>/detail_delete', methods=('POST',))
 @login_required
 def delete(id):
     get_order(id)

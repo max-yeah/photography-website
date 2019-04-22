@@ -62,11 +62,11 @@ def get_profile(id, position, check_author=True):
 def update(id, position):
     g.current = "profile"
     profiles = get_profile(id, position)
-    print(profiles)
 
     if request.method == 'POST':
         username = request.form['username']
-        position = request.form['position']
+        position = request.form['birthday']
+        phone = request.form['phone'] 
         error = None
 
 
