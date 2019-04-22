@@ -11,7 +11,7 @@
       <p class="tm-block-title">
       <a>New Order</a>
       </p>
-        <form method="post" action="" class="tm-signup-form row">
+        <form method="post" action="/basic_info/" class="tm-signup-form row">
                 <div class="form-group col-lg-4">
                         <label for="managername">Manager Name</label>
                         <select 
@@ -122,7 +122,7 @@
                         </tbody>
                     </table>
             {% else %}
-                <form action="" method="post" class="tm-signup-form row">
+                <form action="/photographer_name/" method="post" class="tm-signup-form row">
                     <div class="form-group col-lg-6">
                         <label for="photographer_name">Photographer Name</label>
                         <select 
@@ -135,7 +135,7 @@
                           {% endfor %}
                         </select>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-3">
                             <label class="tm-hide-sm">&nbsp;</label>
                             <button
                               type="submit"
@@ -176,7 +176,7 @@
                         </tbody>
                     </table>
             {% else %}
-                <form action="" method="post" class="tm-signup-form row">
+                <form action="/aftereffect_name/" method="post" class="tm-signup-form row">
                     <div class="form-group col-lg-6">
                         <label for="aftereffect_name">After Effect Name</label>
                         <select 
@@ -189,7 +189,7 @@
                           {% endfor %}
                         </select>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-3">
                             <label class="tm-hide-sm">&nbsp;</label>
                             <button
                               type="submit"
