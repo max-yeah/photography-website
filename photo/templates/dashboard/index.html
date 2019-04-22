@@ -23,6 +23,7 @@ content %}
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
       <p class="tm-block-title">
         <a>Orders list&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        {% if g.user['position']=="projectmanager" %}
         <a
           class="btn btn-primary text-uppercase"
           style="border-radius: 12px 12px 12px 12px"
@@ -30,6 +31,7 @@ content %}
         >
           Add New
         </a>
+        {% endif %}
       </p>
       
       <table class="table">
@@ -43,19 +45,25 @@ content %}
           </tr>
         </thead>
         <tbody>
-        {% for order in orders %}
+          {% for order in orders %}
           <tr align="center">
-            <th scope="row"><b>{{order.orderid}}</b></th>
-            <td>{{order.status}}</td>
+            <th scope="row">
+              <b>{{ order.orderid }}</b>
+            </th>
+            <td>{{ order.status }}</td>
             <!-- <td>{{order.managername}}</td> -->
-            <td>{{order.startdate}}</td>
+            <td>{{ order.startdate }}</td>
             <td align="right">
-              <a class="btn btn-primary text-uppercase" href="{{ url_for('order_detail.index', id = order.orderid) }}">
+              <a
+                class="btn btn-primary text-uppercase"
+                href="{{ url_for('order_detail.index', id = order.orderid) }}"
+              >
                 Detail
               </a>
             </td>
 
-          {% endfor %}
+            {% endfor %}
+          </tr>
         </tbody>
       </table>
     </div>
