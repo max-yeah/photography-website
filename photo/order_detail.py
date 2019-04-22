@@ -78,6 +78,8 @@ def order_check(id = -1):
         price = request.form['price']
         ordertype = request.form['ordertype']
         managername = request.form['managername']
+        photographernames = request.values.getlist['photographer']
+        aftereffectnames = request.values.getlist['photographer']
         status = str(status)
         startdate = str(startdate)
         expectduration = int(expectduration)
@@ -88,7 +90,8 @@ def order_check(id = -1):
         error = None
 
         if not status or not startdate or not expectduration or not price \
-            or not ordertype or not managername:
+            or not ordertype or not managername or not photographernames or \
+            not aftereffectnames:
             error = 'Information is not complete.'
         if ordertype != 'wedding' and ordertype != 'art' and ordertype != 'business':
             error = 'This order type does not exist'
@@ -116,6 +119,27 @@ def order_check(id = -1):
                     " WHERE orderid = '%d'" % \
                     (startdate, status, expectduration, price, ordertype, managerid, id)
                 )
+                cursor.execute(
+                    "DELETE FROM takephoto WHERE orderid = '%d'" % (id,))
+                cursor.execute(
+                    "DELETE FROM doeffect WHERE orderid = '%d'" % (id,))
+                for photographername in photographernames:
+                    cursor.execute(
+                        "SELECT id FROM photographer WHERE username = '%d'" % (photographername)
+                    )
+                    photographerid = cursor.fetchone()
+                    cursor.execute(
+                        "INSERT INTO takephoto(orderid, photographerid) VALUES ('%d', '%d')" % (id, photographerid)
+                    )
+                    
+                for aftereffectname in aftereffectnames:
+                    cursor.execute(
+                        "SELECT id FROM aftereffect WHERE username = '%d'" % (aftereffectname)
+                    )
+                    aftereffectid = cursor.fetchone()
+                    cursor.execute(
+                        "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid)
+                    )
                 db.commit()
             return True
 
@@ -149,12 +173,28 @@ def detail_create():
             aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
             projectmanager_names = projectmanager_names)
 
+@bp.route('/basic_info/', methods=('GET', 'POST'))
+@login_required
+def basic_info():
+    status = order_check()
+    photographer_names = get_all_name('photographer')
+    aftereffect_names = get_all_name('aftereffect')
+    projectmanager_names = get_all_name('projectmanager')
+    if status == True:
+        # return redirect(url_for('order_detail.index', order=None, photographers=None, \
+        # aftereffects = None, id = id))
+        return render_template('order_detail/detail_create.html', order=None, photographers=None, \
+                aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
+                projectmanager_names = projectmanager_names)
+
 
 
 @bp.route('/<int:id>/order_detail/detail_update', methods=('GET', 'POST'))
 @login_required
 def detail_update(id):
     order = get_order(id)
+    photographer_names = get_all_name('photographer')
+    aftereffect_names = get_all_name('aftereffect')
     photographers = get_photographers(id)
     aftereffects = get_aftereffects(id)
     status = order_check(id)
@@ -164,8 +204,10 @@ def detail_update(id):
         aftereffects = aftereffects, id = id))
 
     return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
-            aftereffects = aftereffects, projectmanager_names = projectmanager_names)
+            aftereffects=aftereffects, projectmanager_names=projectmanager_names, \
+            photographer_names=photographer_names, aftereffect_names=aftereffect_names,)
 
+            
 @bp.route('/<int:id>/detail_delete', methods=('POST',))
 @login_required
 def delete(id):
