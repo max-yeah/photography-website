@@ -15,10 +15,12 @@ Setting up the environment
 
    - For Windows:
 
-   ```
-           py -3 -m venv venv
-           venv\Scripts\activate
-   ```
+     ```
+     py -3 -m venv venv
+     venv\Scripts\activate
+     ```
+
+     
 
 2. Install dependency packages in virtual environment:
 
