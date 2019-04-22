@@ -136,7 +136,7 @@ def index(id):
 
 @bp.route('/order_detail/detail_create', methods=('GET', 'POST'))
 @login_required
-def create():
+def detail_create():
     status = order_check()
     if status == True:
         return redirect(url_for('order_detail.index', order=None, photographers=None, \

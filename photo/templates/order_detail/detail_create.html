@@ -8,11 +8,7 @@
     <!-- //order list -->
   <div class="col-12 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-        <p class="col-12 text-center" >
-            {% if error %}
-                <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
-            {% endif %}
-        </p>
+        
       <p class="tm-block-title">
       <a>Order #{{order.orderid}}</a>
         <!-- <a
@@ -130,12 +126,11 @@
               </form>
     </div>
   </div>
-
     <!-- //Photographers -->
     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
         <div class="tm-bg-primary-dark tm-block">
           <h2 class="tm-block-title">Photographers</h2>
-          <table class="table">
+          <!-- <table class="table">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -154,8 +149,15 @@
               </tr>
             {% endfor %}
             </tbody>
-        </table>
+        </table> -->
+
+        <form action="" method="post">
+            {% for photographer in photographers %}
+                <p><input name="Fruit" type="checkbox" value="{{photographer.name}}" /> {{photographer.name}} </p>
+            {% endfor %}
+        </form> 
         </div>
+
       </div>
     
       <!-- //After Effect -->
