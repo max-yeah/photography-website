@@ -2,6 +2,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from photo.auth import login_required
 from photo.db import get_db
@@ -65,26 +66,38 @@ def update(id, position):
 
     if request.method == 'POST':
         username = request.form['username']
-        position = request.form['birthday']
-        phone = request.form['phone'] 
+        birthday = request.form['birthday']
+        phone = request.form['phone']
+        password = request.form['password']
+        password2 = request.form['password2']
+        username = str(username)
+        birthday = str(birthday)
+        phone = str(phone)
+        password = str(password)
+        password2 = str(password2)
         error = None
 
 
         if not username:
             error = 'Username is required.'
-
+        if password != password2:
+            error = 'Password is not consistent'
+        if len(phone) != 11 or not phone.isdigit():
+            error = 'Incorrect phone'
+        
         if error is not None:
             flash(error)
         else:
+
             db = get_db()
             cursor = db.cursor()
-
+            cursor.execute("DELETE FROM %s_phone WHERE id = '%d'" % (position, id))
             cursor.execute(
-                "UPDATE %s SET username = '%s', position = '%s'"
+                "UPDATE %s SET username = '%s', birthday = '%s', password = '%s'"
                 " WHERE id = '%d'" % \
-                (position, username, position, id)
+                (position, username, birthday, generate_password_hash(password), id)
             )
-
+            cursor.execute("INSERT INTO %s_phone(id, phone) VALUES ('%d', '%s')" % (position, id, phone))
             db.commit()
             return redirect(url_for('profile.index', id = id, position = position))
     return render_template('profile/profile_update.html', profiles=profiles)
