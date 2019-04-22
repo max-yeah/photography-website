@@ -35,13 +35,13 @@
       <div class="tm-block-col tm-col-account-settings">
         <div class="tm-bg-primary-dark tm-block tm-block-settings">
           <h2 class="tm-block-title">Account Settings</h2>
-          <form action="" class="tm-signup-form row">
+          <form method="post" class="tm-signup-form row">
             <div class="form-group col-lg-4">
               <label for="name">Your Alias</label>
               <input
-                id="name"
+                id="username"
                 value="{{profiles.username}}"
-                name="name"
+                name="username"
                 type="text"
                 class="form-control validate"
                 required
@@ -90,11 +90,11 @@
             
             <div class="form-group col-lg-4">
               <label class="tm-hide-sm">&nbsp;</label>
-              <button
+              <input
                 type="submit"
+                value="update"
                 class="btn btn-primary btn-block text-uppercase"
               >
-                Update
               </button>
             </div>
           </form>
