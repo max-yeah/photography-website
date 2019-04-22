@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS 
 aftereffect, 
 aftereffect_phone,  
+boss,
 boughtby,           
  computer,           
  customer,           
@@ -37,6 +38,26 @@ CREATE TABLE post (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
+CREATE TABLE boss
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  position VARCHAR(20) NOT NULL,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  salary INT NOT NULL DEFAULT 0,
+  birthday DATE NOT NULL DEFAULT '2000-01-01',
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE boss_phone
+(
+  id INT NOT NULL,
+  phone VARCHAR(11) NOT NULL,
+  PRIMARY KEY (phone, id),
+  FOREIGN KEY (id) REFERENCES boss(id)
+);
+
+
 -- For ManagerLevel: junior, senior, etc
 CREATE TABLE projectmanager
 (
@@ -47,7 +68,9 @@ CREATE TABLE projectmanager
   level VARCHAR(20) NOT NULL DEFAULT '0',
   salary INT NOT NULL DEFAULT 0,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
-  PRIMARY KEY (id)
+  bossid INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (bossid) REFERENCES boss(id)
 );
 
 CREATE TABLE projectmanager_phone
