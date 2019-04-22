@@ -1,9 +1,19 @@
-INSERT INTO projectmanager VALUES (1, 'project manager', 'James Liu', 'jamesliu920101', 'junior', 11000, '1992-01-01');
-INSERT INTO projectmanager VALUES (2, 'project manager', 'Mary Chen', 'marychen930202', 'junior', 11000, '1993-02-02');
-INSERT INTO projectmanager VALUES (3, 'project manager', 'John Feng', 'johnfeng940303', 'junior', 11000, '1994-03-03');
-INSERT INTO projectmanager VALUES (4, 'project manager', 'Linda Wu', 'lindawu930123', 'junior', 11000, '1993-01-23');
-INSERT INTO projectmanager VALUES (5, 'project manager', 'Patricia Lin', 'patricialin890404', 'senior', 15000, '1989-04-04');
-INSERT INTO projectmanager VALUES (6, 'project manager', 'Robert Zhou', 'robertzhou870505', 'senior', 15000, '1987-05-05');
+INSERT INTO boss VALUES (1, 'boss', 'Edward Xu', 'edwardxu800422', 35000, '1980-04-22');
+INSERT INTO boss VALUES (2, 'boss', 'Michelle Gu', 'michellegu820910', 35000, '1982-09-10');
+
+
+INSERT INTO boss_phone VALUES (1, '13680042266');
+INSERT INTO boss_phone VALUES (1, '86056666');
+INSERT INTO boss_phone VALUES (2, '13982091088');
+INSERT INTO boss_phone VALUES (2, '86058888');
+
+
+INSERT INTO projectmanager VALUES (1, 'project manager', 'James Liu', 'jamesliu920101', 'junior', 11000, '1992-01-01', 1);
+INSERT INTO projectmanager VALUES (2, 'project manager', 'Mary Chen', 'marychen930202', 'junior', 11000, '1993-02-02', 1);
+INSERT INTO projectmanager VALUES (3, 'project manager', 'John Feng', 'johnfeng940303', 'junior', 11000, '1994-03-03', 2);
+INSERT INTO projectmanager VALUES (4, 'project manager', 'Linda Wu', 'lindawu930123', 'junior', 11000, '1993-01-23', 2);
+INSERT INTO projectmanager VALUES (5, 'project manager', 'Patricia Lin', 'patricialin890404', 'senior', 15000, '1989-04-04', 1);
+INSERT INTO projectmanager VALUES (6, 'project manager', 'Robert Zhou', 'robertzhou870505', 'senior', 15000, '1987-05-05', 2);
 
 
 INSERT INTO projectmanager_phone VALUES (1, '13623478987');
@@ -53,14 +63,24 @@ INSERT INTO photographer_phone VALUES (8, '13908118901');
 
 
 INSERT INTO takephoto VALUES (1, 1);
+INSERT INTO takephoto VALUES (1, 2);
 INSERT INTO takephoto VALUES (2, 6);
-INSERT INTO takephoto VALUES (3, 2);
-INSERT INTO takephoto VALUES (4, 3);
+INSERT INTO takephoto VALUES (2, 3);
+INSERT INTO takephoto VALUES (2, 4);
+INSERT INTO takephoto VALUES (3, 5);
+INSERT INTO takephoto VALUES (3, 1);
+INSERT INTO takephoto VALUES (4, 2);
 INSERT INTO takephoto VALUES (5, 7);
-INSERT INTO takephoto VALUES (6, 4);
-INSERT INTO takephoto VALUES (7, 5);
-INSERT INTO takephoto VALUES (8, 1);
+INSERT INTO takephoto VALUES (5, 3);
+INSERT INTO takephoto VALUES (5, 4);
+INSERT INTO takephoto VALUES (6, 5);
+INSERT INTO takephoto VALUES (7, 1);
+INSERT INTO takephoto VALUES (7, 2);
+INSERT INTO takephoto VALUES (8, 3);
+INSERT INTO takephoto VALUES (8, 4);
 INSERT INTO takephoto VALUES (9, 8);
+INSERT INTO takephoto VALUES (9, 5);
+INSERT INTO takephoto VALUES (9, 1);
 INSERT INTO takephoto VALUES (10, 2);
 
 
@@ -84,16 +104,26 @@ INSERT INTO aftereffect_phone VALUES (7, '13803040987');
 INSERT INTO aftereffect_phone VALUES (8, '13904301098');
 
 
-INSERT INTO doeffect VALUES (1, 1);
-INSERT INTO doeffect VALUES (2, 6);
-INSERT INTO doeffect VALUES (3, 2);
-INSERT INTO doeffect VALUES (4, 3);
+INSERT INTO doeffect VALUES (1, 4);
+INSERT INTO doeffect VALUES (1, 5);
+INSERT INTO doeffect VALUES (2, 8);
+INSERT INTO doeffect VALUES (2, 2);
+INSERT INTO doeffect VALUES (2, 3);
+INSERT INTO doeffect VALUES (3, 1);
+INSERT INTO doeffect VALUES (3, 4);
+INSERT INTO doeffect VALUES (4, 5);
 INSERT INTO doeffect VALUES (5, 7);
-INSERT INTO doeffect VALUES (6, 4);
+INSERT INTO doeffect VALUES (5, 2);
+INSERT INTO doeffect VALUES (5, 3);
+INSERT INTO doeffect VALUES (6, 1);
+INSERT INTO doeffect VALUES (7, 4);
 INSERT INTO doeffect VALUES (7, 5);
-INSERT INTO doeffect VALUES (8, 1);
-INSERT INTO doeffect VALUES (9, 8);
-INSERT INTO doeffect VALUES (10, 2);
+INSERT INTO doeffect VALUES (8, 2);
+INSERT INTO doeffect VALUES (8, 3);
+INSERT INTO doeffect VALUES (9, 6);
+INSERT INTO doeffect VALUES (9, 1);
+INSERT INTO doeffect VALUES (9, 4);
+INSERT INTO doeffect VALUES (10, 5);
 
 
 INSERT INTO devicemanager VALUES (1, 'device manager', 'Daniel Kang', 'danielkang960531', 'junior', 5000, '1996-05-31');
