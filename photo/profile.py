@@ -49,7 +49,14 @@ def get_profile(id, position, check_author=True):
     sql = ("SELECT * FROM %s WHERE id = '%d'" % (position, id,))
     cursor.execute(sql)
     profiles = cursor.fetchone()
-
+    
+    cursor.execute("SELECT phone FROM %s_phone WHERE id = '%d'" % (position, id,))
+    phone = cursor.fetchone()
+    if phone == None:
+        profiles['phone'] = None
+    else:
+        profiles['phone'] = phone['phone']
+    
     if profiles is None:
         abort(404, "Post id {0} doesn't exist.".format(id))
 
@@ -63,6 +70,14 @@ def get_profile(id, position, check_author=True):
 def update(id, position):
     g.current = "profile"
     profiles = get_profile(id, position)
+    if profiles['position'] == 'aftereffect':
+        profiles['position'] = 'After Effect'
+    if profiles['position'] == 'devicemanager':
+        profiles['position'] = 'Device Manager'
+    if profiles['position'] == 'projectmanager':
+        profiles['position'] = 'Project Manager'
+    if profiles['position'] == 'photographer':
+        profiles['position'] = 'Photographer'
 
     if request.method == 'POST':
         username = request.form['username']
