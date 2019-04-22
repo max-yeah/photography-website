@@ -69,7 +69,7 @@ CREATE TABLE projectmanager
   level VARCHAR(20) NOT NULL DEFAULT 'junior',
   salary INT NOT NULL DEFAULT 5000,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
-  bossid INT NOT NULL,
+  bossid INT NOT NULL DEFAULT 1,
   PRIMARY KEY (id),
   FOREIGN KEY (bossid) REFERENCES boss(id)
 );
