@@ -138,16 +138,16 @@ def index(id):
 @login_required
 def detail_create():
     status = order_check()
-    photographer_name = get_all_name('photographer')
-    aftereffect_name = get_all_name('aftereffect')
-    projectmanager_name = get_all_name('projectmanager')
+    photographer_names = get_all_name('photographer')
+    aftereffect_names = get_all_name('aftereffect')
+    projectmanager_names = get_all_name('projectmanager')
     if status == True:
         return redirect(url_for('order_detail.index', order=None, photographers=None, \
         aftereffects = None, id = id))
 
     return render_template('order_detail/detail_create.html', order=None, photographers=None, \
-            aftereffects=None, photographer_name=photographer_name, aftereffect_name=aftereffect_name, \
-            projectmanager_name = projectmanager_name)
+            aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
+            projectmanager_names = projectmanager_names)
 
 
 
