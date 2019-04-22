@@ -60,56 +60,17 @@ def get_aftereffects(id, check_author=True):
 
     return aftereffects
 
-@bp.route('/<int:id>/order_detail/index')
-def index(id):
-    # print(id)
-    if (g.user):
-        g.current = "index"
-        order = get_order(id)
-        photographers = get_photographers(id)
-        aftereffects = get_aftereffects(id)
+def get_all_name(position):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(
+        "SELECT username FROM %s " % (position, )
+    )
+    names = cursor.fetchall()
 
-        return render_template('order_detail/detail_index.html', order=order, photographers=photographers, \
-            aftereffects = aftereffects)
+    return names
 
-    else:
-        return redirect(url_for('auth.login'))
-
-
-@bp.route('/order_detail/create', methods=('GET', 'POST'))
-@login_required
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
-        error = None
-
-        if not title:
-            error = 'Title is required.'
-
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            cursor = db.cursor()
-            cursor.execute(
-                "INSERT INTO post (title, body, author_id)"
-                " VALUES ('%s', '%s', '%d')" % \
-                (title, body, g.user['id'])
-            )
-            db.commit()
-            return redirect(url_for('order_detail.index'))
-
-    return render_template('order_detail/create.html')
-
-
-
-@bp.route('/<int:id>/order_detail/detail_update', methods=('GET', 'POST'))
-@login_required
-def detail_update(id):
-    order = get_order(id)
-    photographers = get_photographers(id)
-    aftereffects = get_aftereffects(id)
+def order_check(id = -1):
     if request.method == 'POST':
         status = request.form['status']
         startdate = request.form['startdate']
@@ -136,28 +97,70 @@ def detail_update(id):
         cursor = db.cursor()
         cursor.execute("SELECT id from projectmanager WHERE username = '%s'" % (managername,))
         manager = cursor.fetchone()
-        managerid = manager['id']
-        managerid = int(managerid)
 
-        if managerid is None:
+
+        if manager is None:
             error = 'Incorrect manager'
             
         if error is not None:
             flash(error)
+            return False
         else:
-            cursor.execute(
-                "UPDATE porder SET startdate = '%s', status = '%s',"
-                " expectduration = '%d', price = '%d', ordertype = '%s',"
-                " managerid = '%d'"
-                " WHERE orderid = '%d'" % \
-                (startdate, status, expectduration, price, ordertype, managerid, id)
-            )
-            db.commit()
-            return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
-            aftereffects = aftereffects, id = id))
+            managerid = manager['id']
+            managerid = int(managerid)
+            if id != -1:
+                cursor.execute(
+                    "UPDATE porder SET startdate = '%s', status = '%s',"
+                    " expectduration = '%d', price = '%d', ordertype = '%s',"
+                    " managerid = '%d'"
+                    " WHERE orderid = '%d'" % \
+                    (startdate, status, expectduration, price, ordertype, managerid, id)
+                )
+                db.commit()
+            return True
+
+@bp.route('/<int:id>/order_detail/index')
+def index(id):
+    # print(id)
+    if (g.user):
+        g.current = "index"
+        order = get_order(id)
+        photographers = get_photographers(id)
+        aftereffects = get_aftereffects(id)
+
+        return render_template('order_detail/detail_index.html', order=order, photographers=photographers, \
+            aftereffects = aftereffects)
+
+    else:
+        return redirect(url_for('auth.login'))
+
+@bp.route('/order_detail/detail_create', methods=('GET', 'POST'))
+@login_required
+def create():
+    status = order_check()
+    if status == True:
+        return redirect(url_for('order_detail.index', order=None, photographers=None, \
+        aftereffects = None, id = id))
+
+    return render_template('order_detail/detail_update.html', order=None, photographers=None, \
+            aftereffects = None)
+
+
+
+@bp.route('/<int:id>/order_detail/detail_update', methods=('GET', 'POST'))
+@login_required
+def detail_update(id):
+    order = get_order(id)
+    photographers = get_photographers(id)
+    aftereffects = get_aftereffects(id)
+    status = order_check(id)
+    projectmanager_names = get_all_name('projectmanager')
+    if status == True:
+        return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
+        aftereffects = aftereffects, id = id))
 
     return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
-            aftereffects = aftereffects)
+            aftereffects = aftereffects, projectmanager_names = projectmanager_names)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
