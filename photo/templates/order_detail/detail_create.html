@@ -154,7 +154,7 @@
 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
         <div class="tm-bg-primary-dark tm-block">
           <h2 class="tm-block-title">Choose Affect Effects</h2>
-          {% if photographers != None %}
+          {% if aftereffects != None %}
                 <table class="table">
                         <thead>
                         <tr>
@@ -165,12 +165,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for photographer in photographers %}
+                        {% for aftereffect in aftereffects %}
                         <tr>
-                            <th scope="row"><b>{{photographer.id}}</b></th>
-                            <td><b>{{photographer.name}}</b></td>
-                            <td><b>{{photographer.level}}</b></td>
-                            <td><b>{{photographer.phone}}</b></td>
+                            <th scope="row"><b>{{aftereffect.id}}</b></th>
+                            <td><b>{{aftereffect.name}}</b></td>
+                            <td><b>{{aftereffect.level}}</b></td>
+                            <td><b>{{aftereffect.phone}}</b></td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -178,14 +178,14 @@
             {% else %}
                 <form action="" method="post" class="tm-signup-form row">
                     <div class="form-group col-lg-6">
-                        <label for="photographer_name">Photographer Name</label>
+                        <label for="aftereffect_name">After Effect Name</label>
                         <select 
                           class="custom-select" 
                           required
-                          name="photographer_name"
-                          id="photographer_name">
-                          {% for photographer_name in photographer_names %}
-                            <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                          name="aftereffect_name"
+                          id="aftereffect_name">
+                          {% for aftereffect_name in aftereffect_names %}
+                            <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
                           {% endfor %}
                         </select>
                     </div>
