@@ -66,8 +66,8 @@ CREATE TABLE projectmanager
   position VARCHAR(20) NOT NULL,
   username VARCHAR(20) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  level VARCHAR(20) NOT NULL DEFAULT '0',
-  salary INT NOT NULL DEFAULT 0,
+  level VARCHAR(20) NOT NULL DEFAULT 'junior',
+  salary INT NOT NULL DEFAULT 5000,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
   bossid INT NOT NULL,
   PRIMARY KEY (id),
@@ -107,8 +107,8 @@ CREATE TABLE photographer
   position VARCHAR(20) NOT NULL,
   username VARCHAR(20) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  level VARCHAR(20) NOT NULL DEFAULT '0',
-  salary INT NOT NULL DEFAULT 0,
+  level VARCHAR(20) NOT NULL DEFAULT 'junior',
+  salary INT NOT NULL DEFAULT 5000,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
   PRIMARY KEY (id)
 );
@@ -137,8 +137,8 @@ CREATE TABLE aftereffect
   position VARCHAR(20) NOT NULL,
   username VARCHAR(20) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  level VARCHAR(20) NOT NULL DEFAULT '0',
-  salary INT NOT NULL DEFAULT 0,
+  level VARCHAR(20) NOT NULL DEFAULT 'junior',
+  salary INT NOT NULL DEFAULT 5000,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
   PRIMARY KEY (id)
 );
@@ -206,8 +206,8 @@ CREATE TABLE devicemanager
   position VARCHAR(20) NOT NULL,
   username VARCHAR(20) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  level VARCHAR(20) NOT NULL DEFAULT '0',
-  salary INT NOT NULL DEFAULT 0,
+  level VARCHAR(20) NOT NULL DEFAULT 'junior',
+  salary INT NOT NULL DEFAULT 5000,
   birthday DATE NOT NULL DEFAULT '2000-01-01',
   PRIMARY KEY (id)
 );
