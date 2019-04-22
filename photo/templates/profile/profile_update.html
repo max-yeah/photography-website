@@ -8,7 +8,10 @@
       <div class="col-12 tm-block-col">
         <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
           <h3 class="tm-block-title">Your Position</h2>
-          <div class="form-control validate"><p style="margin-top: -0.5%;">{{profiles.position}}</p></div>
+            <div class="row">
+              <div class="ml-3 form-control validate col-lg-2" style="width:fit-content;"><p style="margin-top: -5%; text-align: center;">{{profiles.position}}</p></div>          
+              <div class="ml-5 form-control validate col-lg-2" style="width:fit-content;"><p style="margin-top: -5%; text-align: center;">{{profiles.level}}</p></div>                      
+            </div>
         </div>
       </div>
     </div>
@@ -35,13 +38,13 @@
       <div class="tm-block-col tm-col-account-settings">
         <div class="tm-bg-primary-dark tm-block tm-block-settings">
           <h2 class="tm-block-title">Account Settings</h2>
-          <form action="" class="tm-signup-form row">
+          <form method="post" class="tm-signup-form row">
             <div class="form-group col-lg-4">
-              <label for="name">Your Alias</label>
+              <label for="username">Your Alias</label>
               <input
-                id="name"
+                id="username"
                 value="{{profiles.username}}"
-                name="name"
+                name="username"
                 type="text"
                 class="form-control validate"
                 required
@@ -64,7 +67,7 @@
                   id="phone"
                   name="phone"
                   value="{{profiles.phone}}"
-                  type="tel"
+                  type="text"
                   class="form-control validate"
                   required
                 />
@@ -90,11 +93,11 @@
             
             <div class="form-group col-lg-4">
               <label class="tm-hide-sm">&nbsp;</label>
-              <button
+              <input
                 type="submit"
+                value="update"
                 class="btn btn-primary btn-block text-uppercase"
               >
-                Update
               </button>
             </div>
           </form>
