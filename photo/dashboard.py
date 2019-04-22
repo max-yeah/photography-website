@@ -19,6 +19,7 @@ def index():
             " FROM porder"
             " ORDER BY orderid"
         )
+        print(g.user['position'])
         orders = cursor.fetchall()
 
         cursor.execute(
