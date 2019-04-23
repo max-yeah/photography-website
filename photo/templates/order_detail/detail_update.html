@@ -97,27 +97,8 @@
                       required
                     />
             </div>
-              <!-- <div class="form-group col-lg-4">
-                <label for="photographer_name">Photographers</label>
-                <select multiple class="form-control">
-                    {% for photographer_name in photographer_names %}
-                      <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                    {% endfor %}
-                </select>
-              </div> -->
-              <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-              <!-- <div class="form-group col-lg-6">
-                  <label for="photographer_name">Photographer Name</label>
-                  <select 
-                    class="custom-select" 
-                    required
-                    name="photographer_name"
-                    id="photographer_name">
-                    {% for photographer_name in photographer_names %}
-                      <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                    {% endfor %}
-                  </select>
-              </div> -->
+
+            <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
 
               <div class="form-group col-lg-6">
                   <label for="photographer_name">Photographer Name</label>
@@ -136,52 +117,12 @@
                     {% for a_name in aftereffect_names %}
                       <div class="checkbox">
                           <label><input id="aftereffect_name" name="aftereffect_name" type="checkbox" value="{{a_name.username}}">
-                            {{a_name.username}}
+                            {{aftereffect_name.username}}
                           </label>
                       </div>
                     {% endfor %}
               </div>
 
-              <!-- <div class="row">
-                  <div class="col-sm-2 ">
-                      <label>
-                          <input name="s_option" value="basketball" type="checkbox"> 篮球
-                      </label>
-                  </div>
-                  <div class="col-sm-2 ">
-                      <label>
-                      <input name="s_option" value="football" type="checkbox"> 足球
-                      </label>
-                  </div>
-                  <div class="col-sm-2 ">
-                      <label>
-                          <input name="s_option" value="badminton"  type="checkbox"> 羽毛球
-                      </label>
-                  </div>
-              </div> -->
-
-
-
-
-              <!-- <div class="form-group col-lg-6">
-                  <label for="photographer_name">Photographers</label>
-                  <select multiple class="form-control">
-                      {% for photographer_name in photographer_names %}
-                        <option id="photographer_name" name="photographer_name" value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                      {% endfor %}
-                  </select>
-                  <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="aftereffect_name">Affect Effects</label>
-                    <select multiple class="form-control">
-                        {% for aftereffect_name in aftereffect_names %}
-                          <option id="aftereffect_name" name="aftereffect_name" value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
-                        {% endfor %}
-                    </select>
-                    <label for="aftereffect_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                  </div> -->
             <div class="form-group col-lg-2">
               <label class="tm-hide-sm">&nbsp;</label>
               <button
