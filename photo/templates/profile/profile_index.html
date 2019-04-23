@@ -21,11 +21,42 @@
         <div class="tm-bg-primary-dark tm-block tm-block-avatar">
           <!-- <h2 class="tm-block-title">Picture</h2> -->
           <div class="tm-avatar-container">
-            <img
-              src="https://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-1.jpg"
+              {% if profiles.position=="Project Manager" %}
+              <img
+                src="/static/images/projectmanager.png"
+                alt="Avatar"
+                class="tm-avatar img-fluid mb-4"
+                style="height: 304px; width: 304px"
+              />
+              {% elif profiles.position=="After Effect" %}
+              <img
+              src="/static/images/aftereffect.png"
+              alt="Avatar"
+              class="tm-avatar img-fluid"
+              style="height: 304px; width: 304px"
+              />
+              {% elif profiles.position=="Photographer" %}
+              <img
+              src="/static/images/photographer.png"
               alt="Avatar"
               class="tm-avatar img-fluid mb-4"
-            />
+              style="height: 304px; width: 304px"
+              />
+              {% elif profiles.position=="Device Manager" %}
+              <img
+              src="/static/images/devicemanager.png"
+              alt="Avatar"
+              class="tm-avatar img-fluid mb-4"
+              style="height: 304px; width: 304px"
+              />
+              {% elif profiles.position=="Boss" %}
+              <img
+              src="/static/images/boss.png"
+              alt="Avatar"
+              class="tm-avatar img-fluid mb-4"
+              style="height: 304px; width: 304px"
+              />
+              {% endif %}
             <!-- <a href="#" class="tm-avatar-delete-link">
               <i class="far fa-trash-alt tm-product-delete-icon"></i>
             </a> -->
@@ -46,14 +77,15 @@
                   >
                     Update
                   </a>
-                  <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                  <!-- <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                   <a
                     class="btn btn-primary text-uppercase"
                     style="border-radius: 12px 12px 12px 12px"
                     href="{{ url_for('profile.delete', id=g.user['id']) }}"
                   >
                     Delete
-                  </a>
+                  </a> -->
+            </p>
           <!-- <h2 class="tm-block-title">Account Information</h2> -->
           <form action="" class="tm-signup-form row">
             <div class="form-group col-lg-4">
