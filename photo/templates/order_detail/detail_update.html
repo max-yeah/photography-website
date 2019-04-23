@@ -4,13 +4,19 @@
 
 {% block content %}
 
+<!-- <div class="container tm-mt-big tm-mb-big"> -->
 <div class="row tm-content-row">
     <!-- //order list -->
   <div class="col-12 tm-block-col">
-    
-    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+    <!-- <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll"> -->
+    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-h-auto">
+        <!-- <p class="col-12 text-center" >
+            {% if error %}
+              <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </i>
+            {% endif %}
+        </p> -->
       <p class="tm-block-title">
-      <a>Order #{{order.orderid}}</a>
+      <a>Order #{{order.orderid}} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
       <p class="col-12 text-center" >
           {% if error %}
             <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
@@ -99,11 +105,70 @@
                     {% endfor %}
                 </select>
               </div> -->
+              <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+              <!-- <div class="form-group col-lg-6">
+                  <label for="photographer_name">Photographer Name</label>
+                  <select 
+                    class="custom-select" 
+                    required
+                    name="photographer_name"
+                    id="photographer_name">
+                    {% for photographer_name in photographer_names %}
+                      <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                    {% endfor %}
+                  </select>
+              </div> -->
+
               <div class="form-group col-lg-6">
+                  <label for="photographer_name">Photographer Name</label>
+                    {% for photographer_name in photographer_names %}
+                      <div class="checkbox">
+                          <label><input id="photographer_name" name="photographer_name" type="checkbox" value="{{photographer_name.username}}">
+                            {{photographer_name.username}}
+                          </label>
+                      </div>
+                      <!-- <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option> -->
+                    {% endfor %}
+              </div>
+
+
+              <div class="form-group col-lg-6">
+                  <label for="aftereffect_name">After Affect Name</label>
+                    {% for aftereffect_name in aftereffect_names %}
+                      <div class="checkbox">
+                          <label><input id="aftereffect_name" name="aftereffect_name" type="checkbox" value="{{aftereffect_name.username}}">
+                            {{aftereffect_name.username}}
+                          </label>
+                      </div>
+                    {% endfor %}
+              </div>
+
+              <!-- <div class="row">
+                  <div class="col-sm-2 ">
+                      <label>
+                          <input name="s_option" value="basketball" type="checkbox"> 篮球
+                      </label>
+                  </div>
+                  <div class="col-sm-2 ">
+                      <label>
+                      <input name="s_option" value="football" type="checkbox"> 足球
+                      </label>
+                  </div>
+                  <div class="col-sm-2 ">
+                      <label>
+                          <input name="s_option" value="badminton"  type="checkbox"> 羽毛球
+                      </label>
+                  </div>
+              </div> -->
+
+
+
+
+              <!-- <div class="form-group col-lg-6">
                   <label for="photographer_name">Photographers</label>
                   <select multiple class="form-control">
                       {% for photographer_name in photographer_names %}
-                        <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                        <option id="photographer_name" name="photographer_name" value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
                       {% endfor %}
                   </select>
                   <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
@@ -113,11 +178,11 @@
                     <label for="aftereffect_name">Affect Effects</label>
                     <select multiple class="form-control">
                         {% for aftereffect_name in aftereffect_names %}
-                          <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
+                          <option id="aftereffect_name" name="aftereffect_name" value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
                         {% endfor %}
                     </select>
                     <label for="aftereffect_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                  </div>
+                  </div> -->
             <div class="form-group col-lg-2">
               <label class="tm-hide-sm">&nbsp;</label>
               <button
@@ -137,196 +202,7 @@
     </div>
   </div>
 
-    <!-- //Photographers -->
-    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-        <div class="tm-bg-primary-dark tm-block">
-          <h2 class="tm-block-title">Photographers</h2>
-          <!-- <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Level</th>
-                <th scope="col">Phone</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for photographer in photographers %}
-              <tr>
-                <th scope="row"><b>{{photographer.id}}</b></th>
-                <td><b>{{photographer.name}}</b></td>
-                <td><b>{{photographer.level}}</b></td>
-                <td><b>{{photographer.phone}}</b></td>
-              </tr>
-            {% endfor %}
-            </tbody>
-        </table> -->
-
-        <form action="/photographer_name/" method="post" class="tm-signup-form row">
-          <div class="form-group col-lg-6">
-              <label for="photographer_name">Photographer Name</label>
-              <select 
-                class="custom-select" 
-                required
-                name="photographer_name"
-                id="photographer_name">
-                {% for photographer_name in photographer_names %}
-                  <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                {% endfor %}
-              </select>
-          </div>
-          <div class="form-group col-lg-3">
-                  <label class="tm-hide-sm">&nbsp;</label>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-block text-uppercase"
-                  >
-                    Save
-                  </button>
-                </div>
-      </form>
-
-      <form role="form" action="/photographer_name/" method="post" class="tm-signup-form row">
-        <div class="form-group col-lg-6">
-            <div class="col-sm-2 ">
-                <label>
-                    <input name="s_option" value="basketball" type="checkbox" checked > 篮球
-                </label>
-            </div>
-            <div class="col-sm-2 ">
-                <label>
-                <input name="s_option" value="football" type="checkbox" checked=""> 足球
-                </label>
-            </div>
-            <div class="col-sm-2 ">
-                <label>
-                    <input name="s_option" value="badminton"  type="checkbox" checked=""> 羽毛球
-                </label>
-            </div>
-        </div>
-        <div class="form-group col-lg-3">
-            <label class="tm-hide-sm">&nbsp;</label>
-            <button
-              type="submit"
-              class="btn btn-primary btn-block text-uppercase"
-            >
-              Save
-            </button>
-          </div>
-      </form>
-      
-        </div>
-      </div>
-    
-      <!-- //After Effect -->
-      <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block">
-              <h2 class="tm-block-title">Affect Effects</h2>
-              <!-- <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Level</th>
-                    <th scope="col">Phone</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for aftereffect in aftereffects %}
-                  <tr>
-                    <th scope="row"><b>{{aftereffect.id}}</b></th>
-                    <td><b>{{aftereffect.name}}</b></td>
-                    <td><b>{{aftereffect.level}}</b></td>
-                    <td><b>{{aftereffect.phone}}</b></td>
-                  </tr>
-                {% endfor %}
-                </tbody>
-            </table> -->
-            <form action="/aftereffect_name/" method="post" class="tm-signup-form row">
-              <div class="form-group col-lg-6">
-                  <label for="aftereffect_name">After Effect Name</label>
-                  <select 
-                    class="custom-select" 
-                    required
-                    name="aftereffect_name"
-                    id="aftereffect_name">
-                    {% for aftereffect_name in aftereffect_names %}
-                      <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
-                    {% endfor %}
-                  </select>
-              </div>
-              <div class="form-group col-lg-3">
-                      <label class="tm-hide-sm">&nbsp;</label>
-                      <button
-                        type="submit"
-                        class="btn btn-primary btn-block text-uppercase"
-                      >
-                        Save
-                      </button>
-                    </div>
-          </form>
-            </div>
-          </div>
 </div>
+<!-- </div> -->
 
-
-
-<label for="name">默认的复选框和单选按钮的实例</label>
-<div class="checkbox">
-    <label><input type="checkbox" value="">选项 1</label>
-</div>
-<div class="checkbox">
-    <label><input type="checkbox" value="">选项 2</label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 选项 1
-    </label>
-</div>
-<div class="radio">
-    <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项 2 - 选择它将会取消选择选项 1
-    </label>
-</div>
-<label for="name">内联的复选框和单选按钮的实例</label>
-<div>
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 1
-    </label>
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
-    </label>
-    <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
-    </label>
-    <label class="radio-inline">
-        <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 选项 1
-    </label>
-    <label class="radio-inline">
-        <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 选项 2
-    </label>
-</div>
-
-
-
-<form role="form">
-  <div class="form-group">
-    <label for="name">选择列表</label>
-    <select class="form-control">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-    <label for="name">可多选的选择列表</label>
-    <select multiple class="form-control">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-</form>
 {% endblock %}
