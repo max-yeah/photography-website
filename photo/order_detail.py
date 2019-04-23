@@ -13,7 +13,7 @@ def get_order(id, check_author=True):
     cursor.execute(
         "SELECT ord.orderid orderid, ord.startdate startdate,"
         " ord.status status, ord.expectduration expectduration,"
-        " ord.price price, ord.place place, ord.ordertype ordertype,"
+        " ord.price price, ord.place place, ord.ordertype ordertype, ord.description description,"
         " ord.satisfaction satisfaction, ma.username managername"
         " FROM porder ord, projectmanager ma"
         " WHERE ord.orderid = '%d' AND"
@@ -80,6 +80,7 @@ def order_check(id=-1):
         price = request.form['price']
         ordertype = request.form['ordertype']
         managername = request.form['managername']
+        description = request.form['description']
         photographernames = request.form.getlist('photographer_name')
         aftereffectnames = request.form.getlist('aftereffect_name')
         status = str(status)
@@ -88,12 +89,13 @@ def order_check(id=-1):
         price = int(price)
         ordertype = str(ordertype)
         managername = str(managername)
+        description = str(description)
         ordertype = ordertype.lower()
         error = None
         flag = True
         if not status or not startdate or not expectduration or not price \
             or not ordertype or not managername or not photographernames or \
-            not aftereffectnames:
+            not aftereffectnames or not description:
             error = 'Basic information is not complete.'
         if not photographernames or not aftereffectnames:
             error = 'Photographer and aftereffect information is not complete.'
@@ -102,8 +104,8 @@ def order_check(id=-1):
         if ordertype != 'wedding' and ordertype != 'art' and ordertype != 'business':
             error = 'This order type does not exist'
 
-        if expectduration > 100:
-            error = 'Expect duration is larger than 100'
+        if expectduration > 1000:
+            error = 'Expect duration is larger than 1000 days'
         db = get_db()
         cursor = db.cursor()
         cursor.execute("SELECT id from projectmanager WHERE username = '%s'" % (managername,))
@@ -133,9 +135,9 @@ def order_check(id=-1):
                 cursor.execute(
                     "UPDATE porder SET startdate = '%s', status = '%s',"
                     " expectduration = '%d', price = '%d', ordertype = '%s',"
-                    " managerid = '%d'"
+                    " managerid = '%d', description = '%s'"
                     " WHERE orderid = '%d'" % \
-                    (startdate, status, expectduration, price, ordertype, managerid, id)
+                    (startdate, status, expectduration, price, ordertype, managerid, description, id)
                 )
                 cursor.execute(
                     "DELETE FROM takephoto WHERE orderid = '%d'" % (id,))
@@ -229,7 +231,6 @@ def detail_update(id):
 @bp.route('/<int:id>/detail_delete', methods=('POST',))
 @login_required
 def delete(id):
-    get_order(id)
     db = get_db()
     cursor = db.cursor()
     cursor.execute("DELETE FROM porder WHERE orderid = '%d'" % (id,))
