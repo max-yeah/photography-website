@@ -14,11 +14,29 @@ def index():
         g.current = "index"
         db = get_db()
         cursor = db.cursor()
-        cursor.execute(
-            "SELECT *"
-            " FROM porder"
-            " ORDER BY orderid"
-        )
+        if g.user['position'] == 'projectmanager':
+            cursor.execute(
+                "SELECT *"
+                " FROM porder"
+                " WHERE NOT status = 'complete' AND managerid = '%d' "
+                " ORDER BY orderid" % (g.user['id'])
+            )
+        if g.user['position'] == 'photographer':
+            cursor.execute(
+                "SELECT *"
+                " FROM porder"
+                " WHERE NOT status = 'complete' AND orderid IN (SELECT "
+                "orderid FROM takephoto WHERE photographerid = '%d')"
+                " ORDER BY orderid" % (g.user['id'])
+            )
+        if g.user['position'] == 'aftereffect':
+            cursor.execute(
+                "SELECT *"
+                " FROM porder"
+                " WHERE NOT status = 'complete' AND orderid IN (SELECT "
+                "orderid FROM doeffect WHERE effectid = '%d')"
+                " ORDER BY orderid" % (g.user['id'])
+            )
         print(g.user['position'])
         orders = cursor.fetchall()
 
