@@ -15,6 +15,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        password2 = request.form['password2']
         position = request.form['position']
         position = str(position)
         db = get_db()
@@ -22,8 +23,8 @@ def register():
         cursor = db.cursor()
         if not username:
             error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
+        elif password != password2:
+            error = 'Password is inconsistant.'
         elif not position:
             error = 'position is required.'
         else:
