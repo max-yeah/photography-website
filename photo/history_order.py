@@ -18,7 +18,7 @@ def history_index():
             "SELECT *"
             " FROM porder"
             " WHERE status = 'complete'"
-            " ORDER BY satisfaction"
+            " ORDER BY satisfaction DESC"
         )
         orders = cursor.fetchall()
         return render_template('history_order/history_index.html', orders=orders)
