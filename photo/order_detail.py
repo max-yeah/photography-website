@@ -91,24 +91,14 @@ def order_check(id=-1):
         ordertype = ordertype.lower()
         error = None
         flag = True
-        if not status:
-            error = 'status not'
-        if not startdate:
-            error = 'start date not'
-        if not expectduration:
-            error = ' expect not'
-        if not price:
-            error = 'price not'
-        if not ordertype or not managername:
-            error = 'order type managername'
-        if not photographernames or \
+        if not status or not startdate or not expectduration or not price \
+            or not ordertype or not managername or not photographernames or \
             not aftereffectnames:
-            error = 'Information is not complete.'
+            error = 'Basic information is not complete.'
+        if not photographernames or not aftereffectnames:
+            error = 'Photographer and aftereffect information is not complete.'
 
-        # if not status or not startdate or not expectduration or not price \
-        #     or not ordertype or not managername or not photographernames or \
-        #     not aftereffectnames:
-        #     error = 'Information is not complete.'
+
         if ordertype != 'wedding' and ordertype != 'art' and ordertype != 'business':
             error = 'This order type does not exist'
 
