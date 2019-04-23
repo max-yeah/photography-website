@@ -117,8 +117,18 @@ def order_check(id=-1):
             # flash(error)
             flag =  False
         else:
+            flag = True
             managerid = manager['id']
             managerid = int(managerid)
+            if id == -1:
+                cursor.execute(
+                    "INSERT INTO porder(startdate, status, expectduration, price, ordertype, managerid)"
+                    "VALUES ('%s', '%s', '%d', '%d', '%s', '%d');"
+                     % \
+                    (startdate, status, expectduration, price, ordertype, managerid))
+                cursor.execute(" SELECT orderid FROM porder ORDER BY orderid")
+                return_order = cursor.fetchone()
+                id = return_order['orderid']
             if id != -1:
                 cursor.execute(
                     "UPDATE porder SET startdate = '%s', status = '%s',"
@@ -149,8 +159,8 @@ def order_check(id=-1):
                         "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid['id'])
                     )
                 db.commit()
-            flag = True
-    return flag, error
+    return flag, error, id
+
 
 @bp.route('/<int:id>/order_detail/index')
 def index(id):
@@ -170,31 +180,30 @@ def index(id):
 @bp.route('/order_detail/detail_create', methods=('GET', 'POST'))
 @login_required
 def detail_create():
-    status = order_check()
+    status, error, id = order_check()
     photographer_names = get_all_name('photographer')
     aftereffect_names = get_all_name('aftereffect')
     projectmanager_names = get_all_name('projectmanager')
     if status == True:
         return redirect(url_for('order_detail.index', order=None, photographers=None, \
         aftereffects = None, id = id))
-
     return render_template('order_detail/detail_create.html', order=None, photographers=None, \
             aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
-            projectmanager_names = projectmanager_names)
+            projectmanager_names = projectmanager_names, error = error)
 
-@bp.route('/basic_info/', methods=('GET', 'POST'))
-@login_required
-def basic_info():
-    status = order_check()
-    photographer_names = get_all_name('photographer')
-    aftereffect_names = get_all_name('aftereffect')
-    projectmanager_names = get_all_name('projectmanager')
-    if status == True:
-        # return redirect(url_for('order_detail.index', order=None, photographers=None, \
-        # aftereffects = None, id = id))
-        return render_template('order_detail/detail_create.html', order=None, photographers=None, \
-                aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
-                projectmanager_names = projectmanager_names)
+# @bp.route('/basic_info/', methods=('GET', 'POST'))
+# @login_required
+# def basic_info():
+#     status, error = order_check()
+#     photographer_names = get_all_name('photographer')
+#     aftereffect_names = get_all_name('aftereffect')
+#     projectmanager_names = get_all_name('projectmanager')
+#     if status == True:
+#         # return redirect(url_for('order_detail.index', order=None, photographers=None, \
+#         # aftereffects = None, id = id))
+#         return render_template('order_detail/detail_create.html', order=None, photographers=None, \
+#                 aftereffects=None, photographer_names=photographer_names, aftereffect_names=aftereffect_names, \
+#                 projectmanager_names = projectmanager_names, error = error)
 
 
 
@@ -206,7 +215,7 @@ def detail_update(id):
     aftereffect_names = get_all_name('aftereffect')
     photographers = get_photographers(id)
     aftereffects = get_aftereffects(id)
-    status, error = order_check(id)
+    status, error, id_two= order_check(id)
     projectmanager_names = get_all_name('projectmanager')
     if status == True:
         return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
