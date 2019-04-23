@@ -121,23 +121,22 @@
 
               <div class="form-group col-lg-6">
                   <label for="photographer_name">Photographer Name</label>
-                    {% for photographer_name in photographer_names %}
+                    {% for p_name in photographer_names %}
                       <div class="checkbox">
-                          <label><input id="photographer_name" name="photographer_name" type="checkbox" value="{{photographer_name.username}}">
-                            {{photographer_name.username}}
+                          <label><input id="photographer_name" name="photographer_name" type="checkbox" value="{{p_name.username}}">
+                            {{p_name.username}}
                           </label>
                       </div>
-                      <!-- <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option> -->
                     {% endfor %}
               </div>
 
 
               <div class="form-group col-lg-6">
                   <label for="aftereffect_name">After Affect Name</label>
-                    {% for aftereffect_name in aftereffect_names %}
+                    {% for a_name in aftereffect_names %}
                       <div class="checkbox">
-                          <label><input id="aftereffect_name" name="aftereffect_name" type="checkbox" value="{{aftereffect_name.username}}">
-                            {{aftereffect_name.username}}
+                          <label><input id="aftereffect_name" name="aftereffect_name" type="checkbox" value="{{a_name.username}}">
+                            {{a_name.username}}
                           </label>
                       </div>
                     {% endfor %}
