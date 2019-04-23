@@ -87,9 +87,9 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="photographer_name">Photographers</label>
-                        <select multiple class="form-control">
+                        <select name = "photographer_name" multiple class="form-control">
                             {% for photographer_name in photographer_names %}
-                              <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
+                              <option name = "photographer_name" value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
                             {% endfor %}
                         </select>
                         <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
