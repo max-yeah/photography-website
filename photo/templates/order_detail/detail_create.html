@@ -10,7 +10,12 @@
     <!-- <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll"> -->
     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-h-auto">
       <p class="tm-block-title">
-      <a>New Order</a>
+      <a>New Order &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+      <p class="col-12 text-center" >
+          {% if error %}
+            <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
+          {% endif %}
+      </p>
       </p>
         <form method="post" action="" class="tm-signup-form row">
                 <div class="form-group col-lg-4">
@@ -56,7 +61,6 @@
                         <label for="startdate">Start Date</label>
                         <input
                             id="startdate"
-                            value="{{order.startdate}}"
                             name="startdate"
                             type="date"
                             class="form-control validate"
@@ -67,7 +71,6 @@
                             <label for="expectduration">Expect Duration</label>
                             <input
                               id="expectduration"
-                              value="{{order.expectduration}}"
                               name="expectduration"
                               type="number"
                               class="form-control validate"
@@ -79,34 +82,14 @@
                             <label for="price">Price</label>
                             <input
                               id="price"
-                              value="{{order.price}}"
                               name="price"
                               type="number"
                               class="form-control validate"
                               required
                             />
                     </div>
-                    <!-- <div class="form-group col-lg-6">
-                        <label for="photographer_name">Photographers</label>
-                        <select name = "photographer_name" multiple class="form-control">
-                            {% for photographer_name in photographer_names %}
-                              <option name = "photographer_name" value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                            {% endfor %}
-                        </select>
-                        <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                      </div>
 
-                      <div class="form-group col-lg-6">
-                          <label for="aftereffect_name">Affect Effects</label>
-                          <select multiple class="form-control">
-                              {% for aftereffect_name in aftereffect_names %}
-                                <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
-                              {% endfor %}
-                          </select>
-                          <label for="aftereffect_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                        </div> -->
-
-                        <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+                    <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
                         <div class="form-group col-lg-6">
                             <label for="photographer_name">Photographer Name</label>
                               {% for p_name in photographer_names %}
