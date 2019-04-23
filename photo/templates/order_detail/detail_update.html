@@ -98,8 +98,7 @@
                     />
             </div>
 
-            <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-
+              <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
               <div class="form-group col-lg-6">
                   <label for="photographer_name">Photographer Name</label>
                     {% for p_name in photographer_names %}
@@ -117,7 +116,7 @@
                     {% for a_name in aftereffect_names %}
                       <div class="checkbox">
                           <label><input id="aftereffect_name" name="aftereffect_name" type="checkbox" value="{{a_name.username}}">
-                            {{aftereffect_name.username}}
+                            {{a_name.username}}
                           </label>
                       </div>
                     {% endfor %}
