@@ -96,6 +96,7 @@ CREATE TABLE porder
   ordertype CHAR(20) NOT NULL,
   satisfaction INT NOT NULL DEFAULT 10,
   managerid INT NOT NULL,
+  description VARCHAR(1000) NOT NULL DEFAULT 'This order requires a minimum of 2 photographers and 2 aftereffects. It should be completed within this year.',
   PRIMARY KEY (orderid),
   FOREIGN KEY (managerid) REFERENCES projectmanager(id)
 );

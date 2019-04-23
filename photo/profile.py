@@ -114,7 +114,8 @@ def update(id, position):
             )
             cursor.execute("INSERT INTO %s_phone(id, phone) VALUES ('%d', '%s')" % (position, id, phone))
             db.commit()
-            return redirect(url_for('profile.index', id = id, position = position))
+            return redirect(url_for('profile.index', id=id, position=position))
+        return render_template('profile/profile_update.html', profiles=profiles, error = error)
     return render_template('profile/profile_update.html', profiles=profiles)
 
 @bp.route('/<int:id>/profile/delete', methods=('POST',))
