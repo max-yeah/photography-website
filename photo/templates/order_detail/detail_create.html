@@ -7,7 +7,8 @@
 <div class="row tm-content-row">
     <!-- //order list -->
   <div class="col-12 tm-block-col">
-    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+    <!-- <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll"> -->
+    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-h-auto">
       <p class="tm-block-title">
       <a>New Order</a>
       </p>
@@ -114,128 +115,17 @@
                     Save
                   </button>
                 </div>
+                
+                <div class="form-group col-lg-2">
+                    <label class="tm-hide-sm">&nbsp;</label>
+                    <a class="btn btn-primary btn-block text-uppercase" href="{{ url_for('order_detail.index', id = order.orderid) }}" >
+                        Cancel  
+                  </a>
+                </div>
               </form>
     </div>
   </div>
-    
-  <!-- //Photographers -->
-    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-        <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-          <h2 class="tm-block-title">Choose Photographers</h2>
-            {% if photographers != None %}
-                <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Phone</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for photographer in photographers %}
-                        <tr>
-                            <th scope="row"><b>{{photographer.id}}</b></th>
-                            <td><b>{{photographer.name}}</b></td>
-                            <td><b>{{photographer.level}}</b></td>
-                            <td><b>{{photographer.phone}}</b></td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-            {% else %}
-                <!-- <form action="/photographer_name/" method="post" class="tm-signup-form row">
-                    <div class="form-group col-lg-6">
-                        <label for="photographer_name">Photographer Name</label>
-                        <select 
-                          class="custom-select" 
-                          required
-                          name="photographer_name"
-                          id="photographer_name">
-                          {% for photographer_name in photographer_names %}
-                            <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                          {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-3">
-                            <label class="tm-hide-sm">&nbsp;</label>
-                            <button
-                              type="submit"
-                              class="btn btn-primary btn-block text-uppercase"
-                            >
-                              Save
-                            </button>
-                          </div>
-                </form> -->
-                <div class="form-group col-lg-6">
-                    <label for="photographer_name">Photographers</label>
-                    <select multiple class="form-control">
-                        {% for photographer_name in photographer_names %}
-                          <option value="{{photographer_name.username}}"> {{photographer_name.username}} </option>
-                        {% endfor %}
-                    </select>
-                    <label for="photographer_name">Use 'Ctrl+Click' to choose multiple photographers</label>
-                  </div>
-                <!-- <div class="form-group col-lg-4"> -->
-            {% endif %}
-        <!-- </div> -->
-    </div>
-</div>
-
-<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-        <div class="tm-bg-primary-dark tm-block">
-          <h2 class="tm-block-title">Choose Affect Effects</h2>
-          {% if aftereffects != None %}
-                <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Phone</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for aftereffect in aftereffects %}
-                        <tr>
-                            <th scope="row"><b>{{aftereffect.id}}</b></th>
-                            <td><b>{{aftereffect.name}}</b></td>
-                            <td><b>{{aftereffect.level}}</b></td>
-                            <td><b>{{aftereffect.phone}}</b></td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-            {% else %}
-                <form action="/aftereffect_name/" method="post" class="tm-signup-form row">
-                    <div class="form-group col-lg-6">
-                        <label for="aftereffect_name">After Effect Name</label>
-                        <select 
-                          class="custom-select" 
-                          required
-                          name="aftereffect_name"
-                          id="aftereffect_name">
-                          {% for aftereffect_name in aftereffect_names %}
-                            <option value="{{aftereffect_name.username}}"> {{aftereffect_name.username}} </option>
-                          {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-3">
-                            <label class="tm-hide-sm">&nbsp;</label>
-                            <button
-                              type="submit"
-                              class="btn btn-primary btn-block text-uppercase"
-                            >
-                              Save
-                            </button>
-                          </div>
-                </form>
-                
-                <!-- <div class="form-group col-lg-4"> -->
-            {% endif %}
-        <!-- </div> -->
-      </div>
-    </div>
+  
 </div>
 
 <!-- </form> -->
