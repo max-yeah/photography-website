@@ -30,17 +30,26 @@ INSERT INTO projectmanager_phone VALUES (6, '13702034567');
 INSERT INTO projectmanager_phone VALUES (6, '86050678');
 
 
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid) VALUES (1, '2019-03-01', 'after effect', 14, 688, 'window of the world', 'wedding', 9, 1);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (2, '2019-03-02', 'taking photo', 21, 988, 'cuhk(sz)', 'art', 8, 5);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (3, '2019-03-04', 'taking photo', 14, 688, 'happy valley', 'business', 8, 2);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (4, '2019-03-05', 'after effect', 7, 388, 'shenzhen bay', 'art', 8, 3);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (5, '2019-03-06', 'taking photo', 21, 988, 'shenzhen middle school', 'wedding', 9, 6);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (6, '2019-03-06', 'after effect', 7, 388, 'xiangmi park', 'wedding', 9, 4);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (7, '2019-03-08', 'taking photo', 14, 688, 'oct', 'art', 9, 1);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (8, '2019-03-09', 'preparing', 14, 688, 'dafen village', 'art', 7, 2);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (9, '2019-03-11', 'preparing', 21, 988, 'tencent headquarter', 'business', 8, 5);
-INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (10, '2019-03-11', 'preparing', 7, 388, 'coco park', 'wedding', 9, 3);
-
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid) VALUES (1, '2019-02-01', 'complete', 14, 688, 'window of the world', 'wedding', 9, 1);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (2, '2019-02-02', 'complete', 21, 988, 'cuhk(sz)', 'art', 8, 5);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (3, '2019-02-04', 'complete', 14, 688, 'happy valley', 'business', 8, 2);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (4, '2019-02-05', 'complete', 7, 388, 'shenzhen bay', 'art', 8, 3);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (5, '2019-02-06', 'complete', 21, 988, 'shenzhen middle school', 'wedding', 9, 6);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (6, '2019-02-06', 'complete', 7, 388, 'xiangmi park', 'wedding', 9, 4);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (7, '2019-02-08', 'complete', 14, 688, 'oct', 'art', 9, 1);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (8, '2019-02-09', 'complete', 14, 688, 'dafen village', 'art', 7, 2);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (9, '2019-02-11', 'complete', 21, 988, 'tencent headquarter', 'business', 8, 5);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (10, '2019-02-11', 'complete', 7, 388, 'coco park', 'wedding', 9, 3);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid) VALUES (11, '2019-03-01', 'after effect', 14, 688, 'window of the world', 'wedding', 9, 1);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (12, '2019-03-02', 'taking photo', 21, 988, 'cuhk(sz)', 'art', 8, 5);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (13, '2019-03-04', 'taking photo', 14, 688, 'happy valley', 'business', 8, 2);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (14, '2019-03-05', 'after effect', 7, 388, 'shenzhen bay', 'art', 8, 3);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (15, '2019-03-06', 'taking photo', 21, 988, 'shenzhen middle school', 'wedding', 9, 6);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (16, '2019-03-06', 'after effect', 7, 388, 'xiangmi park', 'wedding', 9, 4);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (17, '2019-03-08', 'taking photo', 14, 688, 'oct', 'art', 9, 1);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (18, '2019-03-09', 'preparing', 14, 688, 'dafen village', 'art', 7, 2);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (19, '2019-03-11', 'preparing', 21, 988, 'tencent headquarter', 'business', 8, 5);
+INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (20, '2019-03-11', 'preparing', 7, 388, 'coco park', 'wedding', 9, 3);
 
 INSERT INTO photographer VALUES (1, 'photographer', 'Michael Zhang', 'michaelzhang950117', 'junior', 8000, '1995-01-17');
 INSERT INTO photographer VALUES (2, 'photographer', 'Barbara Yang', 'barbarayang950208', 'junior', 8000, '1995-02-08');
