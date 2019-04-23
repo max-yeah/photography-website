@@ -58,6 +58,19 @@
               {% endif %}
             </li>
 
+            <li class="nav-item">
+                {% if g.current == "history_order.history_index" %}
+                <a class="nav-link active" href="{{ url_for('history_order.history_index') }}">
+                  <i class="fas fa-tachometer-alt"></i> Full Orders
+                  <span class="sr-only">(current)</span>
+                </a>
+                {% else %}
+                <a class="nav-link" href="{{ url_for('history_order.history_index') }}">
+                  <i class="fas fa-tachometer-alt"></i> Full Orders
+                  <span class="sr-only">(current)</span>
+                </a>
+                {% endif %}
+              </li>
 
             <li class="nav-item">
               {% if g.current == "profile" %}

@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% block title %}Dashboard Page{% endblock %} {% block
-content %}
+{% extends 'base.html' %}
+{% block title %}Dashboard Page{% endblock %}
+
+{% block content %}
 <!-- row -->
 <div class="row tm-content-row">
   <!-- //latest hit -->
@@ -80,9 +82,8 @@ content %}
                 Detail
               </a>
             </td>
-
-            {% endfor %}
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
