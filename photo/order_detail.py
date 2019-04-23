@@ -126,7 +126,7 @@ def order_check(id=-1):
                     "VALUES ('%s', '%s', '%d', '%d', '%s', '%d');"
                      % \
                     (startdate, status, expectduration, price, ordertype, managerid))
-                cursor.execute(" SELECT orderid FROM porder ORDER BY orderid")
+                cursor.execute(" SELECT orderid FROM porder ORDER BY orderid DESC")
                 return_order = cursor.fetchone()
                 id = return_order['orderid']
             if id != -1:
