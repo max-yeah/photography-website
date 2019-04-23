@@ -87,14 +87,14 @@ CREATE TABLE projectmanager_phone
 -- One order can only be managed by one manager
 CREATE TABLE porder
 (
-  orderid INT NOT NULL,
+  orderid INT NOT NULL AUTO_INCREMENT,
   startdate DATE NOT NULL,
   status VARCHAR(40) NOT NULL,
   expectduration INT NOT NULL,
   price INT NOT NULL,
-  place VARCHAR(40) NOT NULL,
+  place VARCHAR(40) NOT NULL DEFAULT 'China',
   ordertype CHAR(20) NOT NULL,
-  satisfaction INT NOT NULL,
+  satisfaction INT NOT NULL DEFAULT 10,
   managerid INT NOT NULL,
   PRIMARY KEY (orderid),
   FOREIGN KEY (managerid) REFERENCES projectmanager(id)
