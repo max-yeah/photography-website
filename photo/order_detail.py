@@ -70,7 +70,9 @@ def get_all_name(position):
 
     return names
 
-def order_check(id = -1):
+def order_check(id=-1):
+    error = None
+    flag = False
     if request.method == 'POST':
         status = request.form['status']
         startdate = request.form['startdate']
@@ -88,14 +90,30 @@ def order_check(id = -1):
         managername = str(managername)
         ordertype = ordertype.lower()
         error = None
-
-        if not status or not startdate or not expectduration or not price \
-            or not ordertype or not managername or not photographernames or \
+        flag = True
+        if not status:
+            error = 'status not'
+        if not startdate:
+            error = 'start date not'
+        if not expectduration:
+            error = ' expect not'
+        if not price:
+            error = 'price not'
+        if not ordertype or not managername:
+            error = 'order type managername'
+        if not photographernames or \
             not aftereffectnames:
             error = 'Information is not complete.'
+
+        # if not status or not startdate or not expectduration or not price \
+        #     or not ordertype or not managername or not photographernames or \
+        #     not aftereffectnames:
+        #     error = 'Information is not complete.'
         if ordertype != 'wedding' and ordertype != 'art' and ordertype != 'business':
             error = 'This order type does not exist'
 
+        if expectduration > 100:
+            error = 'Expect duration is larger than 100'
         db = get_db()
         cursor = db.cursor()
         cursor.execute("SELECT id from projectmanager WHERE username = '%s'" % (managername,))
@@ -106,8 +124,8 @@ def order_check(id = -1):
             error = 'Incorrect manager'
             
         if error is not None:
-            flash(error)
-            return False
+            # flash(error)
+            flag =  False
         else:
             managerid = manager['id']
             managerid = int(managerid)
@@ -141,7 +159,8 @@ def order_check(id = -1):
                         "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid)
                     )
                 db.commit()
-            return True
+            flag = True
+    return flag, error
 
 @bp.route('/<int:id>/order_detail/index')
 def index(id):
@@ -197,7 +216,7 @@ def detail_update(id):
     aftereffect_names = get_all_name('aftereffect')
     photographers = get_photographers(id)
     aftereffects = get_aftereffects(id)
-    status = order_check(id)
+    status, error = order_check(id)
     projectmanager_names = get_all_name('projectmanager')
     if status == True:
         return redirect(url_for('order_detail.index', order=order, photographers=photographers, \
@@ -205,7 +224,7 @@ def detail_update(id):
 
     return render_template('order_detail/detail_update.html', order=order, photographers=photographers, \
             aftereffects=aftereffects, projectmanager_names=projectmanager_names, \
-            photographer_names=photographer_names, aftereffect_names=aftereffect_names,)
+            photographer_names=photographer_names, aftereffect_names=aftereffect_names, error = error)
 
             
 @bp.route('/<int:id>/detail_delete', methods=('POST',))
