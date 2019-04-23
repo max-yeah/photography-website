@@ -102,6 +102,7 @@ def update(id, position):
         
         if error is not None:
             flash(error)
+            return render_template('profile/profile_update.html', profiles=profiles, error = error)
         else:
 
             db = get_db()
