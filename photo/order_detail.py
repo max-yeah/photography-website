@@ -133,20 +133,20 @@ def order_check(id=-1):
                     "DELETE FROM doeffect WHERE orderid = '%d'" % (id,))
                 for photographername in photographernames:
                     cursor.execute(
-                        "SELECT id FROM photographer WHERE username = '%d'" % (photographername)
+                        "SELECT id FROM photographer WHERE username = '%s'" % (photographername)
                     )
                     photographerid = cursor.fetchone()
                     cursor.execute(
-                        "INSERT INTO takephoto(orderid, photographerid) VALUES ('%d', '%d')" % (id, photographerid)
+                        "INSERT INTO takephoto(orderid, photographerid) VALUES ('%d', '%d')" % (id, photographerid['id'])
                     )
                     
                 for aftereffectname in aftereffectnames:
                     cursor.execute(
-                        "SELECT id FROM aftereffect WHERE username = '%d'" % (aftereffectname)
+                        "SELECT id FROM aftereffect WHERE username = '%s'" % (aftereffectname)
                     )
                     aftereffectid = cursor.fetchone()
                     cursor.execute(
-                        "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid)
+                        "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid['id'])
                     )
                 db.commit()
             flag = True
