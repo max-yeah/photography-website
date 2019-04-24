@@ -182,6 +182,50 @@ function drawPieChart() {
   }
 }
 
+function drawPieChart2() {
+  console.log("1");
+  if ($("#pieChart2").length) {
+    var chartHeight = 300;
+
+    $("#pieChartContainer").css("height", chartHeight + "px");
+
+    ctxPie = document.getElementById("pieChart2").getContext("2d");
+
+    optionsPie = {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10
+        }
+      },
+      legend: {
+        position: "top"
+      }
+    };
+
+    configPie = {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: [2, 20, 25],
+            backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582"],
+            label: "Usage"
+          }
+        ],
+        labels: ["Maintenance (2)", "Occupied (20)", "Available (25)"]
+      },
+      options: optionsPie
+    };
+
+    pieChart = new Chart(ctxPie, configPie);
+  }
+}
+
 function updateLineChart() {
   if (lineChart) {
     lineChart.options = optionsLine;
