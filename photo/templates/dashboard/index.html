@@ -37,7 +37,7 @@ content %}
       <h2 class="tm-block-title">Computer Information</h2>
       <div id="pieChartContainer">
         <canvas
-          id="pieChart"
+          id="pieChart2"
           class="chartjs-render-monitor"
           width="200"
           height="200"
@@ -286,12 +286,14 @@ content %}
     configPie,
     lineChart,
     barChart,
-    pieChart;
+    pieChart,
+    pieChart2;
   // DOM is ready
   $(document).ready(function() {
     drawLineChart(); // Line Chart
     drawBarChart(); // Bar Chart
     drawPieChart(); // Pie Chart
+    drawPieChart2();
     updateBarChart();
 
     $(window).resize(function() {
