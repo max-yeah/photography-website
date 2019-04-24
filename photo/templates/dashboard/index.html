@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
-{% block title %}Dashboard Page{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Dashboard Page{% endblock %} {% block
+content %}
 <!-- row -->
 <div class="row tm-content-row">
   <!-- //latest hit -->
@@ -21,14 +19,37 @@
       class="tm-bg-primary-dark tm-block"
       style="border-radius: 16px 16px 16px 16px"
     >
+      {% if g.user['position']=="projectmanager" %}
       <h2 class="tm-block-title">Individual KPI</h2>
       <canvas id="barChart"></canvas>
+      {% elif g.user['position']=="photographer" or
+      g.user['position']=="devicemanager" %}
+      <h2 class="tm-block-title">Camera information</h2>
+      <div id="pieChartContainer">
+        <canvas
+          id="pieChart"
+          class="chartjs-render-monitor"
+          width="200"
+          height="200"
+        ></canvas>
+      </div>
+      {% elif g.user['position']=="aftereffect" %}
+      <h2 class="tm-block-title">Computer Information</h2>
+      <div id="pieChartContainer">
+        <canvas
+          id="pieChart"
+          class="chartjs-render-monitor"
+          width="200"
+          height="200"
+        ></canvas>
+      </div>
+      {% endif %}
     </div>
   </div>
 
   <!-- //order list -->
   <!-- <div class="col-12 tm-block-col"> -->
-  <div class="col-12 col-sm-6 col-md-8 tm-block-col">
+  <div class="col-12 col-sm-6 col-md-7 tm-block-col">
     <div
       class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll"
       style="border-radius: 16px 16px 16px 16px"
@@ -88,7 +109,7 @@
       </table>
     </div>
   </div>
-  <div class="col-6 col-md-4 tm-block-col">
+  <div class="col-6 col-md-5 tm-block-col">
     <div
       class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow"
       style="border-radius: 16px 16px 16px 16px"
@@ -263,8 +284,9 @@
     configLine,
     configBar,
     configPie,
-    lineChart;
-  barChart; //, pieChart;
+    lineChart,
+    barChart,
+    pieChart;
   // DOM is ready
   $(document).ready(function() {
     drawLineChart(); // Line Chart
