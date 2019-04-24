@@ -25,8 +25,8 @@ def index():
             cursor.execute(
                 "SELECT *"
                 " FROM porder"
-                " WHERE NOT status = 'complete' AND orderid IN (SELECT "
-                "orderid FROM takephoto WHERE photographerid = '%d')"
+                " WHERE NOT status = 'complete' AND orderid IN (SELECT"
+                " orderid FROM takephoto WHERE photographerid = '%d')"
                 " ORDER BY orderid" % (g.user['id'])
             )
         if g.user['position'] == 'aftereffect':
