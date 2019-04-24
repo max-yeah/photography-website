@@ -7,13 +7,12 @@ INSERT INTO boss_phone VALUES (1, '86056666');
 INSERT INTO boss_phone VALUES (2, '13982091088');
 INSERT INTO boss_phone VALUES (2, '86058888');
 
-
-INSERT INTO projectmanager VALUES (1, 'project manager', 'James Liu', 'jamesliu920101', 'junior', 11000, '1992-01-01', 1);
-INSERT INTO projectmanager VALUES (2, 'project manager', 'Mary Chen', 'marychen930202', 'junior', 11000, '1993-02-02', 1);
-INSERT INTO projectmanager VALUES (3, 'project manager', 'John Feng', 'johnfeng940303', 'junior', 11000, '1994-03-03', 2);
-INSERT INTO projectmanager VALUES (4, 'project manager', 'Linda Wu', 'lindawu930123', 'junior', 11000, '1993-01-23', 2);
-INSERT INTO projectmanager VALUES (5, 'project manager', 'Patricia Lin', 'patricialin890404', 'senior', 15000, '1989-04-04', 1);
-INSERT INTO projectmanager VALUES (6, 'project manager', 'Robert Zhou', 'robertzhou870505', 'senior', 15000, '1987-05-05', 2);
+INSERT INTO projectmanager VALUES (1, 'projectmanager', 'yifanlan', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 11000, '1992-01-01', 1);
+INSERT INTO projectmanager VALUES (2, 'projectmanager', 'Mary Chen', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 11000, '1993-02-02', 1);
+INSERT INTO projectmanager VALUES (3, 'projectmanager', 'John Feng', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 11000, '1994-03-03', 2);
+INSERT INTO projectmanager VALUES (4, 'projectmanager', 'Linda Wu', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 11000, '1993-01-23', 2);
+INSERT INTO projectmanager VALUES (5, 'projectmanager', 'Patricia Lin', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 15000, '1989-04-04', 1);
+INSERT INTO projectmanager VALUES (6, 'projectmanager', 'Robert Zhou', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 15000, '1987-05-05', 2);
 
 
 INSERT INTO projectmanager_phone VALUES (1, '13623478987');
@@ -51,14 +50,14 @@ INSERT INTO porder (orderid, startdate, status, expectduration, price, place, or
 INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (19, '2019-03-11', 'preparing', 21, 988, 'tencent headquarter', 'business', 8, 5);
 INSERT INTO porder (orderid, startdate, status, expectduration, price, place, ordertype, satisfaction, managerid)VALUES (20, '2019-03-11', 'preparing', 7, 388, 'coco park', 'wedding', 9, 3);
 
-INSERT INTO photographer VALUES (1, 'photographer', 'Michael Zhang', 'michaelzhang950117', 'junior', 8000, '1995-01-17');
-INSERT INTO photographer VALUES (2, 'photographer', 'Barbara Yang', 'barbarayang950208', 'junior', 8000, '1995-02-08');
-INSERT INTO photographer VALUES (3, 'photographer', 'William Li', 'williamli960325', 'junior', 8000, '1996-03-25');
-INSERT INTO photographer VALUES (4, 'photographer', 'Elizabeth Xia', 'elizabethxia940407', 'junior', 8000, '1994-04-07');
-INSERT INTO photographer VALUES (5, 'photographer', 'David Ma', 'davidma940516', 'junior', 8000, '1994-05-16');
-INSERT INTO photographer VALUES (6, 'photographer', 'Jennifer Luo', 'jenniferluo920623', 'senior', 12000, '1992-06-23');
-INSERT INTO photographer VALUES (7, 'photographer', 'Richard Song', 'richardsong910709', 'senior', 12000, '1991-07-09');
-INSERT INTO photographer VALUES (8, 'photographer', 'Maria Shen', 'mariashen900811', 'senior', 12000, '1990-08-11');
+INSERT INTO photographer VALUES (1, 'photographer', 'wenjingcai', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 8000, '1995-01-17');
+INSERT INTO photographer VALUES (2, 'photographer', 'Barbara Yang', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 8000, '1995-02-08');
+INSERT INTO photographer VALUES (3, 'photographer', 'William Li', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 8000, '1996-03-25');
+INSERT INTO photographer VALUES (4, 'photographer', 'Elizabeth Xia', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 8000, '1994-04-07');
+INSERT INTO photographer VALUES (5, 'photographer', 'David Ma', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 8000, '1994-05-16');
+INSERT INTO photographer VALUES (6, 'photographer', 'Jennifer Luo', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1992-06-23');
+INSERT INTO photographer VALUES (7, 'photographer', 'Richard Song', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1991-07-09');
+INSERT INTO photographer VALUES (8, 'photographer', 'Maria Shen', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1990-08-11');
 
 
 INSERT INTO photographer_phone VALUES (1, '13601171234');
@@ -93,14 +92,14 @@ INSERT INTO takephoto VALUES (9, 1);
 INSERT INTO takephoto VALUES (10, 2);
 
 
-INSERT INTO aftereffect VALUES (1, 'after effect', 'Charles An', 'charlesan950909', 'junior', 6000, '1995-09-09');
-INSERT INTO aftereffect VALUES (2, 'after effect', 'Susan Bao', 'susanbao961018', 'junior', 6000, '1996-10-18');
-INSERT INTO aftereffect VALUES (3, 'after effect', 'Joseph Cai', 'josephcai951125', 'junior', 6000, '1995-11-25');
-INSERT INTO aftereffect VALUES (4, 'after effect', 'Margaret Deng', 'margaretdeng1230', 'junior', 6000, '1996-12-30');
-INSERT INTO aftereffect VALUES (5, 'after effect', 'Thomas Fang', 'thomasfang940127', 'junior', 6000, '1994-01-27');
-INSERT INTO aftereffect VALUES (6, 'after effect', 'Dorothy Gao', 'dorothygao890213', 'senior', 9000, '1989-02-13');
-INSERT INTO aftereffect VALUES (7, 'after effect', 'Christopher Han', 'christopherhan880304', 'senior', 9000, '1988-03-04');
-INSERT INTO aftereffect VALUES (8, 'after effect', 'Lisa Jiang', 'lisajiang900430', 'senior', 9000, '1990-04-30');
+INSERT INTO aftereffect VALUES (1, 'aftereffect', 'Charles An', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 6000, '1995-09-09');
+INSERT INTO aftereffect VALUES (2, 'aftereffect', 'Susan Bao', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 6000, '1996-10-18');
+INSERT INTO aftereffect VALUES (3, 'aftereffect', 'Joseph Cai', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 6000, '1995-11-25');
+INSERT INTO aftereffect VALUES (4, 'aftereffect', 'Margaret Deng', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 6000, '1996-12-30');
+INSERT INTO aftereffect VALUES (5, 'aftereffect', 'Thomas Fang', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'junior', 6000, '1994-01-27');
+INSERT INTO aftereffect VALUES (6, 'aftereffect', 'Dorothy Gao', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 9000, '1989-02-13');
+INSERT INTO aftereffect VALUES (7, 'aftereffect', 'Christopher Han', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 9000, '1988-03-04');
+INSERT INTO aftereffect VALUES (8, 'aftereffect', 'Lisa Jiang', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 9000, '1990-04-30');
 
 
 INSERT INTO aftereffect_phone VALUES (1, '13609094321');
