@@ -23,9 +23,8 @@
           {% endif %}
       </p>
       </p>
-      
         <form method="post" action="" class="tm-signup-form row">
-            <div class="form-group col-lg-3">
+            <div class="form-group col-lg-4">
                 <label for="managername">Manager Name</label>
                 <select 
                   class="custom-select" 
@@ -38,7 +37,7 @@
                 </select>
             </div>
 
-            <div class="form-group col-lg-3">
+            <div class="form-group col-lg-4">
                 <label for="status">Status</label>
                 <select 
                   class="custom-select" 
@@ -52,7 +51,7 @@
                 </select>
               </div>
 
-            <div class="form-group col-lg-3">
+            <div class="form-group col-lg-4">
                 <label for="ordertype">Order Type</label>
                 <select 
                   class="custom-select" 
@@ -65,7 +64,7 @@
                 </select>
               </div>
             
-            <div class="form-group col-lg-3">
+            <div class="form-group col-lg-4">
                 <label for="startdate">Start Date</label>
                 <input
                     id="startdate"
@@ -76,7 +75,8 @@
                     required
                 />
             </div>
-            <div class="form-group col-lg-3">
+            <!-- <div class="form-group col-lg-4">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div> -->
+            <div class="form-group col-lg-4">
                     <label for="expectduration">Expect Duration</label>
                     <input
                       id="expectduration"
@@ -87,7 +87,7 @@
                       required
                     />
             </div>
-            <div class="form-group col-lg-3">
+            <div class="form-group col-lg-4">
                     <label for="price">Price</label>
                     <input
                       id="price"
@@ -98,9 +98,25 @@
                       required
                     />
             </div>
+            
+            <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+            <div class="col-6 tm-block-col">
+                <!-- <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll"> -->
+                    <h2 class="tm-block-title">Order Description</h2>
+                    <!-- style="overflow:auto" -->
+                    <textarea id="description"
+                    name="description"
+                    type="text"
+                    class="form-control validate"
+                    required
+                    >{{order.description}}
+                  </textarea>
+              </div>
 
-              <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-              <div class="form-group col-lg-6">
+              
+
+              <!-- <div class="form-group col-lg-12">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div> -->
+              <div class="form-group col-lg-3">
                   <label for="photographer_name">Photographer Name</label>
                     {% for p_name in photographer_names %}
                       <div class="checkbox">
@@ -111,8 +127,7 @@
                     {% endfor %}
               </div>
 
-
-              <div class="form-group col-lg-6">
+              <div class="form-group col-lg-3">
                   <label for="aftereffect_name">After Affect Name</label>
                     {% for a_name in aftereffect_names %}
                       <div class="checkbox">

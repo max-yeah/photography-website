@@ -20,14 +20,14 @@ def index(id, position):
     phone = cursor.fetchone()
     if phone == None:
         cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
-        "pos.birthday birthday, pos.salary salary"
+        "pos.birthday birthday, pos.home home"
         " FROM %s pos"
         " WHERE pos.id = '%d'" % (position, id,))
         profiles = cursor.fetchone()
         profiles['phone'] = None
     else:
         cursor.execute("SELECT pos.id, pos.position position, pos.username username, pos.level level, "
-                "pos.birthday birthday, pos.salary salary, MAX(phone.phone) phone"
+                "pos.birthday birthday, pos.home home, MAX(phone.phone) phone"
                 " FROM %s pos, %s_phone phone"
                 " WHERE pos.id = '%d' AND"
                 " pos.id = phone.id" % (position, position, id,))
