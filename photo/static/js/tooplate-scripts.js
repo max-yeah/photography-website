@@ -173,7 +173,7 @@ function drawPieChart() {
             label: "Storage"
           }
         ],
-        labels: ["Maintenance (7)", "Occupied (20)", "Available (14)"]
+        labels: ["Maintenance", "Occupied", "Available"]
       },
       options: optionsPie
     };
@@ -217,7 +217,7 @@ function drawPieChart2() {
             label: "Usage"
           }
         ],
-        labels: ["Maintenance (2)", "Occupied (20)", "Available (25)"]
+        labels: ["Maintenance", "Occupied", "Available"]
       },
       options: optionsPie
     };
