@@ -85,6 +85,7 @@ def update(id, position):
         phone = request.form['phone']
         password = request.form['password']
         password2 = request.form['password2']
+        home = request.form['address']
         username = str(username)
         birthday = str(birthday)
         phone = str(phone)
@@ -97,7 +98,7 @@ def update(id, position):
             error = 'Username is required.'
         if password != password2:
             error = 'Password is not consistent'
-        if len(phone) != 11 or not phone.isdigit():
+        if not (len(phone) == 11 or len(phone) == 8) or not phone.isdigit():
             error = 'Incorrect phone'
         
         if error is not None:
@@ -109,9 +110,9 @@ def update(id, position):
             cursor = db.cursor()
             cursor.execute("DELETE FROM %s_phone WHERE id = '%d'" % (position, id))
             cursor.execute(
-                "UPDATE %s SET username = '%s', birthday = '%s', password = '%s'"
+                "UPDATE %s SET username = '%s', birthday = '%s', password = '%s', home = '%s'"
                 " WHERE id = '%d'" % \
-                (position, username, birthday, generate_password_hash(password), id)
+                (position, username, birthday, generate_password_hash(password), home, id)
             )
             cursor.execute("INSERT INTO %s_phone(id, phone) VALUES ('%d', '%s')" % (position, id, phone))
             db.commit()
