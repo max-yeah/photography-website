@@ -151,6 +151,26 @@ INSERT INTO doeffect VALUES (9, 6);
 INSERT INTO doeffect VALUES (9, 1);
 INSERT INTO doeffect VALUES (9, 4);
 INSERT INTO doeffect VALUES (10, 5);
+INSERT INTO doeffect VALUES (11, 4);
+INSERT INTO doeffect VALUES (11, 5);
+INSERT INTO doeffect VALUES (12, 8);
+INSERT INTO doeffect VALUES (12, 2);
+INSERT INTO doeffect VALUES (12, 3);
+INSERT INTO doeffect VALUES (13, 1);
+INSERT INTO doeffect VALUES (13, 4);
+INSERT INTO doeffect VALUES (14, 5);
+INSERT INTO doeffect VALUES (15, 7);
+INSERT INTO doeffect VALUES (15, 2);
+INSERT INTO doeffect VALUES (15, 3);
+INSERT INTO doeffect VALUES (16, 1);
+INSERT INTO doeffect VALUES (17, 4);
+INSERT INTO doeffect VALUES (17, 5);
+INSERT INTO doeffect VALUES (18, 2);
+INSERT INTO doeffect VALUES (18, 3);
+INSERT INTO doeffect VALUES (19, 6);
+INSERT INTO doeffect VALUES (19, 1);
+INSERT INTO doeffect VALUES (19, 4);
+INSERT INTO doeffect VALUES (20, 5);
 
 
 INSERT INTO devicemanager VALUES (1, 'device manager', 'Daniel Kang', 'danielkang960531', 'junior', 5000, '1996-05-31');
