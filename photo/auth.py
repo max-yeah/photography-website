@@ -37,13 +37,13 @@ def register():
                 position = 'aftereffect'      
             cursor.execute(
                 "SELECT id FROM %s WHERE username = '%s'" % (position, username,))
-            if cursor.fetchone() != None:
-                error = 'User {} is already registered. Or you have the wrong position'.format(username)
+            if cursor.fetchone() == None:
+                error = 'User {} Does not exist. Or you enter the wrong position'.format(username)
 
         if error is None:                
             cursor.execute(
-            "INSERT INTO %s (username, password, position) VALUES ('%s', '%s', '%s')" % \
-            (position, username, generate_password_hash(password),position))
+            "UPDATE %s SET password = '%s' WHERE username = '%s'" % \
+            (position, generate_password_hash(password), username))
             db.commit()
             return redirect(url_for('auth.login'))
 
@@ -69,7 +69,9 @@ def login():
         if position == 'device manager':
             position = 'devicemanager'
         if position == 'after effect':
-            position = 'aftereffect'  
+            position = 'aftereffect'
+        if position == 'boss':
+            position = 'projectmanager'
         cursor.execute(
             "SELECT * FROM %s WHERE username = '%s'" % (position, username,)
         )
@@ -88,7 +90,6 @@ def login():
             return redirect(url_for('index'))
 
 
-        print("error!!!", error)
         return render_template('auth/login.html',error = error)
 
     return render_template('auth/login.html')
@@ -103,7 +104,6 @@ def load_logged_in_user():
     else:
         db = get_db()
         cursor = db.cursor()
-        # if user_position.lower() == 'project manager':
         cursor.execute(
             "SELECT * FROM %s WHERE id = '%d'" % (user_position, user_id,)
         )
