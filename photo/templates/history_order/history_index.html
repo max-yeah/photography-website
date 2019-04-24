@@ -8,9 +8,7 @@
 <!-- //order list -->
   <div class="col-12 tm-block-col">
   <!-- <div class="col-12 col-sm-6 col-md-8 tm-block-col"> -->
-        <div
-          class="tm-bg-primary-dark tm-block tm-block-taller tm-block-h-auto"
-        >
+        <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-h-auto" >
         <h2 class="tm-block-title">Top Orders</h2>
     
           <table class="table">
@@ -31,7 +29,15 @@
                 <th scope="row">
                   <b>{{ order.orderid }}</b>
                 </th>
-                <td>{{ order.satisfaction }}</td>
+                <td>
+                  {% if order.satisfaction <= 7 %}
+                    <div class="tm-status-circle cancelled"></div>
+                    {% elif order.satisfaction > 7 and order.satisfaction <= 8%}
+                    <div class="tm-status-circle pending"></div>
+                    {% elif order.satisfaction >= 9 %}
+                    <div class="tm-status-circle moving"></div>
+                    {% endif %}
+                  {{ order.satisfaction }}</td>
                 <td>{{order.ordertype}}</td>
                 <td>{{ order.startdate }}</td>
                 <td>{{ order.place }}</td>

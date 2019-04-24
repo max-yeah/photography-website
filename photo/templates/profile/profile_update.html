@@ -77,13 +77,13 @@
         <div class="tm-bg-primary-dark tm-block tm-block-settings">
             <p class="tm-block-title">
                 <a>Account Setting&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                  <a
+                  <!-- <a
                     class="btn btn-primary text-uppercase"
                     style="border-radius: 12px 12px 12px 12px"
                     href="{{ url_for('profile.index', id=g.user['id'], position = g.user['position']) }}"
                   >
                     Cancel
-                  </a>
+                  </a> -->
             </p>
           <form method="post" class="tm-signup-form row">
             <div class="form-group col-lg-4">
@@ -114,11 +114,22 @@
                   id="phone"
                   name="phone"
                   value="{{profiles.phone}}"
-                  type="text"
+                  type="tel"
                   class="form-control validate"
                   required
                 />
               </div>
+              <div class="form-group col-lg-4">
+                  <label for="address">Address</label>
+                  <input
+                  id="address"
+                  name="address"
+                  value="{{profiles.home}}"
+                  type="text"
+                  class="form-control validate"
+                  required
+                />
+                </div>
             <div class="form-group col-lg-4">
               <label for="password">Password</label>
               <input
@@ -138,7 +149,7 @@
               />
             </div>
             
-            <div class="form-group col-lg-4">
+            <div class="form-group col-lg-3">
               <label class="tm-hide-sm">&nbsp;</label>
               <input
                 type="submit"
@@ -147,6 +158,15 @@
               >
               </button>
             </div>
+
+            <div class="form-group col-lg-3">
+                <label class="tm-hide-sm">&nbsp;</label>
+                <a class="btn btn-primary btn-block text-uppercase"
+                    href="{{ url_for('profile.index', id=g.user['id'], position = g.user['position']) }}" >
+                    Cancel  
+              </a>
+            </div>
+
           </form>
         </div>
       </div>
