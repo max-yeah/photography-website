@@ -34,7 +34,11 @@
       style="border-radius: 16px 16px 16px 16px"
     >
       <p class="tm-block-title">
-        <a>My Orders &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        {% if g.user['position']=="projectmanager"%}
+          <a>Processing Orders &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        {% else %}
+          <a>My Orders &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        {% endif %}
         {% if g.user['position']=="projectmanager" %}
         <a
           class="btn btn-primary text-uppercase"
