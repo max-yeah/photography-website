@@ -105,7 +105,15 @@ function drawBarChart() {
     configBar = {
       type: "horizontalBar",
       data: {
-        labels: ["Bob", "Alice", "Lan Yifan", "Cai Wenjing", "Ye Haolin", "Ye Chengwei", "Marvel"],
+        labels: [
+          "Bob",
+          "Alice",
+          "Lan Yifan",
+          "Cai Wenjing",
+          "Ye Haolin",
+          "Ye Chengwei",
+          "Marvel"
+        ],
         datasets: [
           {
             label: "KPI grade",
@@ -131,7 +139,7 @@ function drawBarChart() {
 }
 
 function drawPieChart() {
-  console.log('1')
+  console.log("1");
   if ($("#pieChart").length) {
     var chartHeight = 300;
 
@@ -160,16 +168,12 @@ function drawPieChart() {
       data: {
         datasets: [
           {
-            data: [18.24, 6.5, 9.15],
+            data: [7, 20, 14],
             backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582"],
             label: "Storage"
           }
         ],
-        labels: [
-          "Used Storage (18.240GB)",
-          "System Storage (6.500GB)",
-          "Available Storage (9.150GB)"
-        ]
+        labels: ["Maintenance (7)", "Occupied (20)", "Available (14)"]
       },
       options: optionsPie
     };
@@ -186,11 +190,11 @@ function updateLineChart() {
 }
 
 function updateBarChart() {
-  console.log('1')
+  console.log("1");
   if (barChart) {
-    console.log("here")
+    console.log("here");
     barChart.options = optionsBar;
     barChart.update();
   }
-  console.log("out")
+  console.log("out");
 }

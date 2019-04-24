@@ -24,7 +24,7 @@ content %}
       <canvas id="barChart"></canvas>
       {% elif g.user['position']=="photographer" or
       g.user['position']=="devicemanager" %}
-      <h2 class="tm-block-title">Camera information</h2>
+      <h2 class="tm-block-title">Camera Information</h2>
       <div id="pieChartContainer">
         <canvas
           id="pieChart"
@@ -91,7 +91,7 @@ content %}
               {% elif order.status == "taking photo" %}
               <div class="tm-status-circle moving"></div>
               {% endif %}
-              {{ order.status }}
+              {{ order.status.title() }}
             </td>
             <!-- <td>{{order.managername}}</td> -->
             <td>{{ order.startdate }}</td>
