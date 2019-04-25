@@ -2,10 +2,30 @@
 
 Setting up the environment
 
-1. Setting up the virtual environment. The system is currently developed with Python3. Please make sure that the Flask, Pymysql is properly installed in the virtual environment. Refer to <http://flask.pocoo.org/docs/1.0/installation/#virtual-environments>
+1. Setting up the virtual environment. The system is currently developed with Python3. Please make sure that the Flask, Pymysql is properly installed in the `virtual environment`. Refer to <http://flask.pocoo.org/docs/1.0/installation/#virtual-environments>
 
-2. Before initialize the database, we need to install dependency packages in virtual environment: cryptography and pymysql
+   - For Linux and Mac:
+
+     ```
+     mkdir myproject
+     cd myproject
+     python3 -m venv venv
+     . venv/bin/activate
+     ```
+
+   - For Windows:
+
+     ```
+     py -3 -m venv venv
+     venv\Scripts\activate
+     ```
+
+     
+
+2. Install dependency packages in virtual environment:
+
    ```
+   pip install Flask
    pip install pymysql
    pip install cryptography
    ```
@@ -16,7 +36,7 @@ Setting up the environment
    CREATE DATABASE photo;
    ```
 
-4. Create a  user 'photodev' and grant privilege.
+4. When log in mysql as root, create a  user 'photodev' and grant privilege.
 
    ```
    CREATE USER 'photodev'@'localhost' IDENTIFIED BY '123456';
@@ -49,16 +69,16 @@ $env:FLASK_ENV = "development"
 flask run
 ```
 
-
 To initialize the database, the following command should be executed. This command will overwrite all data in the database 'photo'
 
 ```shell
 flask init-db
+flask run
 ```
 
- The index page should be on
+ The log in page should be on
 
 ```http
-http://127.0.0.1:5000/
+http://127.0.0.1:5000/auth/login
 ```
 
