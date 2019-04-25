@@ -8,7 +8,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'photo.sqlite'),
+        # DATABASE=os.path.join(app.instance_path, 'photo.sqlite'),
     )
 
     if test_config is None:
@@ -28,15 +28,25 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
-
+    
+    
     from . import db
     db.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
 
-    from . import blog
-    app.register_blueprint(blog.bp)
+    from . import dashboard
+    app.register_blueprint(dashboard.bp)
     app.add_url_rule('/', endpoint='index')
 
+    from . import profile
+    app.register_blueprint(profile.bp)
+
+    from . import order_detail
+    app.register_blueprint(order_detail.bp)
+
+    from . import history_order
+    app.register_blueprint(history_order.bp)
+    
     return app
