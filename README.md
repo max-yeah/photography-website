@@ -105,10 +105,10 @@ http://127.0.0.1:5000/auth/login
 
 We have four views:
 
-1. login & Initialize page
-2. dashboard page (charts are specific for different positions)
-3. order pages (create order/ order details/ completed order)
-4. profile page
+1. Login & Initialize page
+2. Dashboard page (charts are specific for different positions)
+3. Order pages (create order/ order details/ completed order)
+4. Profile page
 
 <br>
 
