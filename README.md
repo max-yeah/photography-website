@@ -2,8 +2,8 @@
 
 ## Catalog
 
-* Setting up environment
-* Website Demo
+* [Setting up environment](#setting-up-the-environment)
+* [Website Demo](#website-demo)
 
 <br>
 
@@ -111,7 +111,7 @@ We have four views:
 
 <br>
 
-**Note**: Since the photographer website is designed for internal members, users can <b>only login using the existing accounts</b>. That's the reason why we set the "**Initialize**" page, not "**register**" page.
+> **Note**: Since the photographer website is designed for internal members, users can <u>only login using the existing accounts</u>. That's the reason why we set the "**Initialize**" page, not "**register**" page.
 
 We provide several account for you to test our website:
 
