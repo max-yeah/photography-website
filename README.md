@@ -115,7 +115,7 @@ We have four views:
 
 We provide several account for you to test our website:
 
-All passwords is preset to 123456. You can initialize it through **Initialize** page for the first time. Later if you want to change the password again, please visit the **profile** page.
+All passwords are preset to 123456. You can initialize the password through **Initialize** page for the first time. Later if you want to change the password again, please visit the **profile** page.
 
 **Project Manager:**
 
