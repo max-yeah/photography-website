@@ -58,6 +58,7 @@ INSERT INTO photographer VALUES (5, 'photographer', 'David Ma', 'pbkdf2:sha256:1
 INSERT INTO photographer VALUES (6, 'photographer', 'Jennifer Luo', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1992-06-23', 'Dujiangyan');
 INSERT INTO photographer VALUES (7, 'photographer', 'Richard Song', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1991-07-09', 'Tianjin');
 INSERT INTO photographer VALUES (8, 'photographer', 'Maria Shen', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1990-08-11', 'Japan');
+INSERT INTO photographer VALUES (8, 'photographer', 'Maria Shen', 'pbkdf2:sha256:150000$IceVsG42$ce77ce1dc9a2dc348930c7031733845e84b3012328bd977772a44644b77b9639', 'senior', 12000, '1990-08-11', 'Japan');
 
 
 INSERT INTO photographer_phone VALUES (1, '13601171234');
