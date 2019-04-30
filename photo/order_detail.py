@@ -10,14 +10,15 @@ bp = Blueprint('order_detail', __name__)
 def get_order(id, check_author=True):
     db = get_db()
     cursor = db.cursor()
+    val = (id, )
     cursor.execute(
         "SELECT ord.orderid orderid, ord.startdate startdate,"
         " ord.status status, ord.expectduration expectduration,"
         " ord.price price, ord.place place, ord.ordertype ordertype, ord.description description,"
         " ord.satisfaction satisfaction, ma.username managername"
         " FROM porder ord, projectmanager ma"
-        " WHERE ord.orderid = '%d' AND"
-        " ord.managerid = ma.id" % (id, )
+        " WHERE ord.orderid = %s AND"
+        " ord.managerid = ma.id" ,val
     )
     order = cursor.fetchone()
 
@@ -32,14 +33,15 @@ def get_order(id, check_author=True):
 def get_photographers(id, check_author=True):
     db = get_db()
     cursor = db.cursor()
+    val = (id, )
     cursor.execute(
         "SELECT photo.id id, photo.username name, photo.level level, MAX(pp.phone) phone"
         " FROM photographer photo, photographer_phone pp"
         " WHERE photo.id = pp.id AND"
         " photo.id in (SELECT photographerid"
         "               FROM takephoto"
-        "               WHERE orderid =  '%d')"
-        " GROUP BY photo.id, photo.username, photo.level" % (id, )
+        "               WHERE orderid =  %s)"
+        " GROUP BY photo.id, photo.username, photo.level" , val
     )
     photographers = cursor.fetchall()
     return photographers
@@ -47,14 +49,15 @@ def get_photographers(id, check_author=True):
 def get_aftereffects(id, check_author=True):
     db = get_db()
     cursor = db.cursor()
+    val = (id, )
     cursor.execute(
         "SELECT effect.id id, effect.username name, effect.level level, MAX(ap.phone) phone"
         " FROM aftereffect effect, aftereffect_phone ap"
         " WHERE effect.id = ap.id AND"
         " effect.id in (SELECT effectid"
         "               FROM doeffect"
-        "               WHERE orderid =  '%d')"
-        " GROUP BY effect.id, effect.username, effect.level" % (id, )
+        "               WHERE orderid =  %s)"
+        " GROUP BY effect.id, effect.username, effect.level" , val
     )
     aftereffects = cursor.fetchall()
 
@@ -108,7 +111,8 @@ def order_check(id=-1):
             error = 'Expect duration is larger than 1000 days'
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT id from projectmanager WHERE username = '%s'" % (managername,))
+        val = (managername,)
+        cursor.execute("SELECT id from projectmanager WHERE username = %s" , val)
         manager = cursor.fetchone()
 
 
@@ -123,43 +127,45 @@ def order_check(id=-1):
             managerid = manager['id']
             managerid = int(managerid)
             if id == -1:
+                val = (startdate, status, expectduration, price, ordertype, managerid)
                 cursor.execute(
                     "INSERT INTO porder(startdate, status, expectduration, price, ordertype, managerid)"
-                    "VALUES ('%s', '%s', '%d', '%d', '%s', '%d');"
-                     % \
-                    (startdate, status, expectduration, price, ordertype, managerid))
+                    "VALUES (%s, %s, %s, %s, %s, %s);", val)
                 cursor.execute(" SELECT orderid FROM porder ORDER BY orderid DESC")
                 return_order = cursor.fetchone()
                 id = return_order['orderid']
             if id != -1:
+                val = (startdate, status, expectduration, price, ordertype, managerid, description, id)
                 cursor.execute(
-                    "UPDATE porder SET startdate = '%s', status = '%s',"
-                    " expectduration = '%d', price = '%d', ordertype = '%s',"
-                    " managerid = '%d', description = '%s'"
-                    " WHERE orderid = '%d'" % \
-                    (startdate, status, expectduration, price, ordertype, managerid, description, id)
+                    "UPDATE porder SET startdate = %s, status = %s,"
+                    " expectduration = %s, price = %s, ordertype = %s,"
+                    " managerid = %s, description = %s"
+                    " WHERE orderid = %s" , val    
                 )
+                val = (id,)
                 cursor.execute(
-                    "DELETE FROM takephoto WHERE orderid = '%d'" % (id,))
+                    "DELETE FROM takephoto WHERE orderid = %s", val)
                 cursor.execute(
-                    "DELETE FROM doeffect WHERE orderid = '%d'" % (id,))
+                    "DELETE FROM doeffect WHERE orderid = %s", val)
                 for photographername in photographernames:
+                    val = (photographername)
                     cursor.execute(
-                        "SELECT id FROM photographer WHERE username = '%s'" % (photographername)
+                        "SELECT id FROM photographer WHERE username = %s" , val
                     )
                     photographerid = cursor.fetchone()
+                    val = (id, photographerid['id'])
                     cursor.execute(
-                        "INSERT INTO takephoto(orderid, photographerid) VALUES ('%d', '%d')" % (id, photographerid['id'])
-                    )
+                        "INSERT INTO takephoto(orderid, photographerid) VALUES (%s, %s)" , val)
                     
                 for aftereffectname in aftereffectnames:
+                    val = (aftereffectname)
                     cursor.execute(
-                        "SELECT id FROM aftereffect WHERE username = '%s'" % (aftereffectname)
+                        "SELECT id FROM aftereffect WHERE username = %s" , val
                     )
                     aftereffectid = cursor.fetchone()
+                    val = (id, aftereffectid['id'])
                     cursor.execute(
-                        "INSERT INTO doeffect(orderid, effectid) VALUES ('%d', '%d')" % (id, aftereffectid['id'])
-                    )
+                        "INSERT INTO doeffect(orderid, effectid) VALUES (%s, %s)", val)
                 db.commit()
     return flag, error, id
 
@@ -228,11 +234,18 @@ def detail_update(id):
             photographer_names=photographer_names, aftereffect_names=aftereffect_names, error = error)
 
             
-@bp.route('/<int:id>/detail_delete', methods=('POST',))
+@bp.route('/<int:id>/order_detail/detail_delete', methods=('POST','GET'))
 @login_required
-def delete(id):
+def detail_delete(id):
     db = get_db()
     cursor = db.cursor()
-    cursor.execute("DELETE FROM porder WHERE orderid = '%d'" % (id,))
+    val = (id,)
+    cursor.execute("DELETE FROM takephoto WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM doeffect WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM boughtby WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM photodevice WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM porder WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM vehicle WHERE orderid = %s" , val)
+    
     db.commit()
     return redirect(url_for('dashboard.index'))

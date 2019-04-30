@@ -4,9 +4,8 @@
 
 {% block content %}
 
-<!-- <div class="container mt-5"> -->
+<div class="container mt-5">
 <div class="row tm-content-row">
-    <!-- //order list -->
     <p class="col-12 text-center" >
       {% if error %}
         <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
@@ -14,34 +13,53 @@
   </p>
   <!-- basic info for an order-->
   <div class="col-8 tm-block-col">
-    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-        <!-- <p class="col-12 text-center" >
-            {% if error %}
-              <i class="tm-block-title" style="opacity:0.8; color:red"> {{error}} </h2>
-            {% endif %}
-        </p> -->
+    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" >
 
       <p class="tm-block-title">
-      <a>Order #{{order.orderid}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+      <a>{% if order.status == "complete" %}
+        Completed Order #{{order.orderid}}
+        {% else %}
+        Order #{{order.orderid}}
+        {% endif %}
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      </a>
 
       {% if g.user['position']=="projectmanager" %}
-        <a
-          class="btn btn-primary text-uppercase"
-          style="border-radius: 12px 12px 12px 12px"
-          href="{{ url_for('order_detail.detail_update', id = order.orderid) }}"
-        >
-          Edit
-        </a>
+          {% if order.status != "complete" %}
+              <a
+                class="btn btn-primary text-uppercase"
+                style="border-radius: 12px 12px 12px 12px"
+                href="{{ url_for('order_detail.detail_update', id = order.orderid) }}"
+              >
+                Edit
+              </a>
 
-        <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-        
-        <a
-          class="btn btn-primary text-uppercase"
-          style="border-radius: 12px 12px 12px 12px"
-          href="#"
-        >
-          Delete
-        </a>
+              <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+              <a class='btn btn-primary text-uppercase'
+                  style="border-radius: 12px 12px 12px 12px"
+                  data-toggle="modal"
+                  data-href='{{url_for("order_detail.detail_delete", id = order.orderid) }}'
+                  data-target="#confirm-delete">
+              Delete
+              </a>
+              
+              <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          Please comfirm
+                      </div>
+                      <div class="modal-body">
+                          Are you sure to delete order #{{ order.orderid }} ?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                          <a class="btn btn-danger btn-ok" href='{{url_for("order_detail.detail_delete", id = order.orderid) }}'>submit</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endif %}
       {% endif %}
       </p>
           <form action="" class="tm-signup-form row">
@@ -49,10 +67,27 @@
                   <label for="phone">Manager Name</label>
                   <div class="form-control validate"><p style="margin-top: -2%;">{{order.managername}}</p></div>
               </div>
-            <div class="form-group col-lg-4">
-              <label for="email">Status</label>
-              <div class="form-control validate"><p style="margin-top: -2%;">{{order.status}}</p></div>
-            </div>
+            {% if order.status == "complete" %}
+              <div class="form-group col-lg-4">
+                <label for="email">Satisfaction&nbsp&nbsp
+                    {% if order.satisfaction <= 7 %}
+                    <div class="tm-status-circle cancelled"></div>
+                    {% elif order.satisfaction > 7 and order.satisfaction <= 8%}
+                    <div class="tm-status-circle pending"></div>
+                    {% elif order.satisfaction >= 9 %}
+                    <div class="tm-status-circle moving"></div>
+                    {% endif %}
+                </label>
+                <div class="form-control validate"><p style="margin-top: -2%;">
+                    
+                  {{order.satisfaction}}</p></div>
+              </div>
+            {% else %}
+              <div class="form-group col-lg-4">
+                  <label for="email">Status</label>
+                  <div class="form-control validate"><p style="margin-top: -2%;">{{order.status}}</p></div>
+              </div>
+            {% endif %}
             <div class="form-group col-lg-4">
                 <label for="phone">Order Type</label>
                 <div class="form-control validate"><p style="margin-top: -2%;">{{order.ordertype}}</p></div>
@@ -91,16 +126,6 @@
     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
         <div class="tm-bg-primary-dark tm-block">
           <h2 class="tm-block-title">Photographers</h2>
-          <!-- <p class="tm-block-title">
-              <a>Photographers&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                <a
-                  class="btn btn-primary text-uppercase"
-                  style="border-radius: 12px 12px 12px 12px"
-                  href="{{ url_for('order_detail.detail_update', id = order.orderid) }}"
-                >
-                  Edit
-                </a>
-              </p> -->
           <table class="table">
             <thead>
               <tr>
@@ -128,16 +153,6 @@
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
             <div class="tm-bg-primary-dark tm-block">
               <h2 class="tm-block-title">Affect Effects</h2>
-              <!-- <p class="tm-block-title">
-                  <a>Affect Effects&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                    <a
-                      class="btn btn-primary text-uppercase"
-                      style="border-radius: 12px 12px 12px 12px"
-                      href="{{ url_for('order_detail.detail_update', id = order.orderid) }}"
-                    >
-                      Edit
-                    </a>
-                  </p> -->
               <table class="table">
                 <thead>
                   <tr>
@@ -160,5 +175,6 @@
             </table>
             </div>
           </div>
+        </div>
 </div>
 {% endblock %}
