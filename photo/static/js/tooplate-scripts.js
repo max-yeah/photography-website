@@ -9,7 +9,7 @@ function drawLineChart() {
           {
             scaleLabel: {
               display: true,
-              labelString: "Hits"
+              labelString: "Performance"
             }
           }
         ]
@@ -34,24 +34,24 @@ function drawLineChart() {
         ],
         datasets: [
           {
-            label: "Latest Hits",
-            data: [88, 68, 79, 57, 50, 55, 70],
+            label: "# orders",
+            data: [88, 68, 55, 57, 70, 75, 60],
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             cubicInterpolationMode: "monotone",
             pointRadius: 0
           },
           {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
+            label: "# Positive Comments",
+            data: [33, 45, 37, 41, 58, 55, 39],
             fill: false,
             borderColor: "rgba(255,99,132,1)",
             cubicInterpolationMode: "monotone",
             pointRadius: 0
           },
           {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
+            label: "# Negative Comments",
+            data: [55, 23, 18, 15, 12, 20, 21],
             fill: false,
             borderColor: "rgba(153, 102, 255, 1)",
             cubicInterpolationMode: "monotone",
@@ -81,7 +81,7 @@ function drawBarChart() {
             },
             scaleLabel: {
               display: true,
-              labelString: "KPI"
+              labelString: "Members"
             }
           }
         ]
@@ -105,7 +105,15 @@ function drawBarChart() {
     configBar = {
       type: "horizontalBar",
       data: {
-        labels: ["Bob", "Alice", "Lan Yifan", "Cai Wenjing", "Ye Haolin", "Ye Chengwei", "Caiwei"],
+        labels: [
+          "Bob",
+          "Alice",
+          "Lan Yifan",
+          "Cai Wenjing",
+          "Ye Haolin",
+          "Ye Chengwei",
+          "Marvel"
+        ],
         datasets: [
           {
             label: "KPI grade",
@@ -131,7 +139,7 @@ function drawBarChart() {
 }
 
 function drawPieChart() {
-  console.log('1')
+  console.log("1");
   if ($("#pieChart").length) {
     var chartHeight = 300;
 
@@ -160,16 +168,56 @@ function drawPieChart() {
       data: {
         datasets: [
           {
-            data: [18.24, 6.5, 9.15],
+            data: [7, 20, 14],
             backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582"],
             label: "Storage"
           }
         ],
-        labels: [
-          "Used Storage (18.240GB)",
-          "System Storage (6.500GB)",
-          "Available Storage (9.150GB)"
-        ]
+        labels: ["Maintenance", "Occupied", "Available"]
+      },
+      options: optionsPie
+    };
+
+    pieChart = new Chart(ctxPie, configPie);
+  }
+}
+
+function drawPieChart2() {
+  console.log("1");
+  if ($("#pieChart2").length) {
+    var chartHeight = 300;
+
+    $("#pieChartContainer").css("height", chartHeight + "px");
+
+    ctxPie = document.getElementById("pieChart2").getContext("2d");
+
+    optionsPie = {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10
+        }
+      },
+      legend: {
+        position: "top"
+      }
+    };
+
+    configPie = {
+      type: "pie",
+      data: {
+        datasets: [
+          {
+            data: [2, 20, 25],
+            backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582"],
+            label: "Usage"
+          }
+        ],
+        labels: ["Maintenance", "Occupied", "Available"]
       },
       options: optionsPie
     };
@@ -186,11 +234,11 @@ function updateLineChart() {
 }
 
 function updateBarChart() {
-  console.log('1')
+  console.log("1");
   if (barChart) {
-    console.log("here")
+    console.log("here");
     barChart.options = optionsBar;
     barChart.update();
   }
-  console.log("out")
+  console.log("out");
 }
