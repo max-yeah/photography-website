@@ -234,7 +234,7 @@ def detail_update(id):
             photographer_names=photographer_names, aftereffect_names=aftereffect_names, error = error)
 
             
-@bp.route('/<int:id>/detail_delete', methods=('POST',))
+@bp.route('/<int:id>/order_detail/detail_delete', methods=('POST',))
 @login_required
 def delete(id):
     db = get_db()

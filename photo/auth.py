@@ -27,12 +27,12 @@ def register():
             error = 'Password is inconsistant.'
         elif not position:
             error = 'position is required.'
+        elif position == 'Boss' or position == 'Device Manager':
+            error = 'This position is not available in the demo'
         else:
             position = position.lower()
             if position == 'project manager':
                 position = 'projectmanager'
-            if position == 'device manager':
-                position = 'devicemanager'
             if position == 'after effect':
                 position = 'aftereffect'      
             cursor.execute(
@@ -63,25 +63,24 @@ def login():
         db = get_db()
         error = None
         cursor = db.cursor()
+        if position == 'Boss' or position == 'Device Manager':
+            error = 'This position is not available in the demo'
         position = position.lower()
         if position == 'project manager':
             position = 'projectmanager'
-        if position == 'device manager':
-            position = 'devicemanager'
         if position == 'after effect':
             position = 'aftereffect'
-        if position == 'boss':
-            position = 'projectmanager'
-        cursor.execute(
-            "SELECT * FROM %s WHERE username = '%s'" % (position, username,)
-        )
-        user = cursor.fetchone()
+        if error is None:
+            cursor.execute(
+                "SELECT * FROM %s WHERE username = '%s'" % (position, username,)
+            )
+            user = cursor.fetchone()
 
-        if user is None:
-            error = 'Incorrect username.'
-        else:
-            if not check_password_hash(user['password'], password):
-                error = 'Incorrect password.'
+            if user is None:
+                error = 'Incorrect username.'
+            else:
+                if not check_password_hash(user['password'], password):
+                    error = 'Incorrect password.'
 
         if error is None:
             session.clear()
