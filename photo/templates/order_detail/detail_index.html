@@ -34,14 +34,42 @@
         </a>
 
         <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a class='btn btn-primary text-uppercase'
+            style="border-radius: 12px 12px 12px 12px"
+            data-toggle="modal"
+            data-href='{{url_for("order_detail.detail_delete", id = order.orderid) }}'
+            data-target="#confirm-delete">
+        Delete
+        </a>
         
-        <a
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Please comfirm
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete order #{{ order.orderid }} ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                    <a class="btn btn-danger btn-ok" href='{{url_for("order_detail.detail_delete", id = order.orderid) }}'>submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- <a
           class="btn btn-primary text-uppercase"
           style="border-radius: 12px 12px 12px 12px"
-          href="#"
+          href="{{ url_for('order_detail.detail_delete', id = order.orderid) }}"
         >
           Delete
-        </a>
+        </a> -->
+
+        <!-- <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          This is an alert box.
+        </div> -->
       {% endif %}
       </p>
           <form action="" class="tm-signup-form row">
