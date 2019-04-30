@@ -13,12 +13,13 @@
 
 This is the course project for CSC3170 (Database System) . Contributors to this project are:
 
-- 116010265: Chengwei, Ye
-- 116010266: Haolin, Ye
 - 116010004: Wenjing, Cai
 - 116010103: Yifan, Lan
 
-It aims at providing small scale photography studios with an integrated data management system. Tools we use to implement this system include Python3, Flask,  Jinja, MySQL, Bootstrap, jQuery, HTML, JS and CSS. You can follow this document to set up the environment by yourself. You can also go to the website demo to directly access our project.
+- 116010265: Chengwei, Ye
+- 116010266: Haolin, Ye
+
+It aims at providing small scale photography studios with an integrated data management system. Tools we use to implement this system include Python3, Flask,  Jinja, MySQL, Bootstrap, jQuery, HTML, JS and CSS. You can follow this document to set up the environment by yourself. You can also go to the website demo to directly access our project.   If you have any problem, you can cantact us via [116010103@link.cuhk.edu.cn]().
 
 ## Setting up the environment
 
