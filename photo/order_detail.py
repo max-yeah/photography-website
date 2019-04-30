@@ -240,6 +240,12 @@ def detail_delete(id):
     db = get_db()
     cursor = db.cursor()
     val = (id,)
-    cursor.execute("DELETE FROM porder WHERE orderid = %s" , val)
+    cursor.execute("DELETE FROM takephoto WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM doeffect WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM boughtby WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM photodevice WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM porder WHERE orderid = %s", val)
+    cursor.execute("DELETE FROM vehicle WHERE orderid = %s" , val)
+    
     db.commit()
     return redirect(url_for('dashboard.index'))
