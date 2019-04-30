@@ -33,10 +33,20 @@ def register():
             position = position.lower()
             if position == 'project manager':
                 position = 'projectmanager'
+                val = (username)
+                cursor.execute(
+                "SELECT id FROM projectmanager WHERE username = %s" , val)
+ 
             if position == 'after effect':
-                position = 'aftereffect'      
-            cursor.execute(
-                "SELECT id FROM %s WHERE username = '%s'" % (position, username,))
+                position = 'aftereffect'
+                val = (username)
+                cursor.execute(
+                "SELECT id FROM aftereffect WHERE username = %s" , val)
+            if position == 'photographer':
+                val = (username)
+                cursor.execute(
+                "SELECT id FROM photographer WHERE username = %s" , val)
+ 
             if cursor.fetchone() == None:
                 error = 'User {} Does not exist. Or you enter the wrong position'.format(username)
 
@@ -44,6 +54,21 @@ def register():
             cursor.execute(
             "UPDATE %s SET password = '%s' WHERE username = '%s'" % \
             (position, generate_password_hash(password), username))
+
+            if position == 'projectmanager':
+                val = (generate_password_hash(password), username)
+                cursor.execute(
+                  "UPDATE projectmanager SET password = %s WHERE username = %s" , val)
+            if position == 'photographer':
+                val = (generate_password_hash(password), username)
+                cursor.execute(
+                  "UPDATE photographer SET password = %s WHERE username = %s" , val)
+            if position == 'aftereffect':
+                val = (generate_password_hash(password), username)
+                cursor.execute(
+                  "UPDATE aftereffect SET password = %s WHERE username = %s" , val)
+
+ 
             db.commit()
             return redirect(url_for('auth.login'))
 
@@ -63,17 +88,24 @@ def login():
         db = get_db()
         error = None
         cursor = db.cursor()
-        if position == 'Boss' or position == 'Device Manager':
+        if position == 'boss' or position == 'Device Manager':
             error = 'This position is not available in the demo'
         position = position.lower()
-        if position == 'project manager':
-            position = 'projectmanager'
-        if position == 'after effect':
-            position = 'aftereffect'
         if error is None:
-            cursor.execute(
-                "SELECT * FROM %s WHERE username = '%s'" % (position, username,)
-            )
+            if position == 'project manager':
+                position = 'projectmanager'
+                val = (username)
+                cursor.execute(
+                "SELECT * FROM projectmanager WHERE username = %s" , val)
+            if position == 'after effect':
+                position = 'aftereffect'
+                val = (username)
+                cursor.execute(
+                "SELECT * FROM aftereffect WHERE username = %s" , val)
+            if position == 'photographer':
+                val = (username)
+                cursor.execute(
+                "SELECT * FROM photographer WHERE username = %s", val)
             user = cursor.fetchone()
 
             if user is None:
