@@ -19,7 +19,7 @@ This is the course project for CSC3170 (Database System) . Contributors to this 
 - 116010265: Chengwei, Ye
 - 116010266: Haolin, Ye
 
-It aims at providing small scale photography studios with an integrated data management system. Tools we use to implement this system include Python3, Flask,  Jinja, MySQL, Bootstrap, jQuery, HTML, JS and CSS. You can follow this document to set up the environment by yourself. You can also go to the website demo to directly access our project.   If you have any problem, you can cantact us via [116010103@link.cuhk.edu.cn]().
+It aims at providing small scale photography studios with an integrated data management system. Tools we use to implement this system include Python3, Flask,  Jinja, MySQL, Bootstrap, jQuery, HTML, JS and CSS. You can follow this document to set up the environment by yourself. You can also go to the website demo to directly access our project. If you have any problem, feel free to raise issue.
 
 ## Setting up the environment
 
@@ -123,9 +123,9 @@ We have four views:
 
 <br>
 
-> **Note**: Since the photographer website is designed for internal members, users can <u>only login using the existing accounts</u>. That's the reason why we set the "**Initialize**" page, not "**register**" page.
+> **Note**: Since the photographer website is designed for internal members, users can <u>only login using the existing accounts</u>. That's the reason why we set the "**Initialize**" page, rather than a "**register**" page.
 
-We provide several account for you to test our website:
+We provide several accounts for you to test our website:
 
 All passwords are preset to 123456. You can initialize the password through **Initialize** page for the first time. Later if you want to change the password again, please visit the **profile** page.
 
