@@ -28,8 +28,7 @@ It aims at providing small scale photography studios with an integrated data man
    - For Linux and Mac:
 
      ```
-     mkdir myproject
-     cd myproject
+     cd photography-website
      python3 -m venv venv
      . venv/bin/activate
      ```
@@ -60,7 +59,14 @@ It aims at providing small scale photography studios with an integrated data man
    ```
    CREATE USER 'photodev'@'localhost' IDENTIFIED BY '123456';
    GRANT ALL PRIVILEGES ON photo.* TO 'photodev'@'localhost';
+   FLUSH PRIVILEGES;
    ```
+
+To initialize the database, the following command should be executed. This command will overwrite all data in the database 'photo'
+
+```shell
+flask init-db
+```
 
 
 For Linux and Mac:
@@ -87,17 +93,12 @@ $env:FLASK_ENV = "development"
 flask run
 ```
 
-To initialize the database, the following command should be executed. This command will overwrite all data in the database 'photo'
+If you deploy it on Linux server, run `flask run --host=0.0.0.0` instead of `flask run`.
 
-```shell
-flask init-db
-flask run
-```
-
- The log in page should be on
+The log in page should be on
 
 ```http
-http://127.0.0.1:5000/auth/login
+http://127.0.0.1:5000
 ```
 
 
@@ -110,7 +111,7 @@ http://127.0.0.1:5000/auth/login
 
 ## Website demo 
 
-[Website page](http://129.204.216.8:5000)
+[Website page](http://csc3170.maxye.dev/auth/login)
 
 **<u>(For TA) How to test our website</u>**
 
