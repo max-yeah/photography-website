@@ -111,7 +111,7 @@ http://127.0.0.1:5000
 
 ## Website demo 
 
-[Website page](http://csc3170.maxye.dev/auth/login)
+[Website page](http://185.238.249.133:5000/auth/login)
 
 **<u>(For TA) How to test our website</u>**
 
